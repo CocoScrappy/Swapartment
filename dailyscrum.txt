@@ -1,0 +1,41 @@
+Template
+=========
+2022/11/00 
+1. Done / not done since last scrum:
+- 
+2. To do until next Scrum:
+- 
+3. Need assistance / figure things out
+- 
+
+
+
+Day 1
+=========
+2022/11/03 Alina
+1. Done / not done since last scrum:
+- 
+2. To do until next Scrum:
+- 
+3. Need assistance / figure things out
+- 
+
+2022/11/03 Louis
+1. Done / not done since last scrum:
+- Setup Trello with user stories
+- Finished proposal
+- re-evaluated database schema
+2. To do until next Scrum:
+- Database Connection
+- Create Model
+- Add lazyloading Proxies
+3. Need assistance / figure things out
+- 
+
+2022/11/03 Dmitry
+1. Done / not done since last scrum:
+- 
+2. To do until next Scrum:
+- 
+3. Need assistance / figure things out
+- 
