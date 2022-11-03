@@ -34,10 +34,12 @@ Day 1
 3. Need assistance / figure things out
 - 
 
-2022/11/03 Dmitry
+2022/11/03 DMITRY
 1. Done / not done since last scrum:
-- 
+- set up git, server and database, looked into Scaffolding, looked up no-https port issue
 2. To do until next Scrum:
-- 
+- Database Connection
+- Scaffold identity user
+- work on model
 3. Need assistance / figure things out
-- 
+- - Scaffold identity user and collaborate with Louis on models
