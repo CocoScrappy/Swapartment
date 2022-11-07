@@ -9,7 +9,18 @@ Template
 - 
 07th Nov
 ===========
-2022/11/06 Louis
+2022/11/07 DMITRY
+1. Done / not done since last scrum:
+- Looked into Managed Identities, Key Vault (no access given to us by JAC)
+- stored conn_str using dotnet user-secrets
+/ did not touch - look into Azure Blob
+2. To do until next Scrum:
+- integrate code with that of Louis
+- look into Azure Blob
+3. Need assistance / figure things out
+- NA
+
+2022/11/07 Louis
 1. Done / not done since last scrum:
 - Scaffolded demo project
 - Seeded roles USER and ADMIN
@@ -23,6 +34,17 @@ Template
 
 Weekend Scrum
 ============
+2022/11/06 DMITRY
+1. Done / not done since last scrum:
+- connected to Azure DB, set up Azure App Service for app hosting
+- Scaffolded identity user
+/ did not touch - working on model
+2. To do until next Scrum:
+- Look into Managed Identities, Key Vault to store connection string
+- look into Azure Blob
+3. Need assistance / figure things out
+- NA
+
 2022/11/06 Louis
 1. Done / not done since last scrum:
 - Scaffolded demo project
