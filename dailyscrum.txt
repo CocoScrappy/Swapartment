@@ -7,6 +7,18 @@ Template
 - 
 3. Need assistance / figure things out
 - 
+07th Nov
+===========
+2022/11/06 Louis
+1. Done / not done since last scrum:
+- Scaffolded demo project
+- Seeded roles USER and ADMIN
+- Added roles at registration for USER
+- Retrieved Principal (currentUser) Role in page view
+2. To do until next Scrum:
+- join team's work and build initial project
+3. Need assistance / figure things out
+- connecting to Azure DB
 
 
 Weekend Scrum
@@ -14,9 +26,6 @@ Weekend Scrum
 2022/11/06 Louis
 1. Done / not done since last scrum:
 - Scaffolded demo project
-- Seeded roles USER and ADMIN
-- Added roles at registration for USER
-- Retrieved Principal (currentUser) Role in page view
 2. To do until next Scrum:
 - join team's work and build initial project
 3. Need assistance / figure things out
