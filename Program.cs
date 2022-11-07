@@ -1,7 +1,45 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
+using System;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using Swapartment.Areas.Identity.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+//var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
+
+
+
+// Get values from the config given their key and their target type.
+string conn_str = builder.Configuration["sql_con_str"] ?? throw new InvalidOperationException("Connection string 'conn_str' not found.");
+
+// Host.CreateDefaultBuilder(args)
+//     .ConfigureAppConfiguration((context, config) =>
+//     {
+//         var buildConfiguration = config.Build();
+//         string keyVaultUri = buildConfiguration["KeyVaultConfig:KeyVaultUri"];
+//         string tenantId = buildConfiguration["KeyVaultConfig:TenantId"];
+//         string clientId = buildConfiguration["KeyVaultConfig:ClientId"];
+//         string clientSecret = buildConfiguration["KeyVaultConfig:ClientSecret"];
+//         var credential = new ClientSecretCredential(tenantId, clientId, clientSecret);
+//         var client = new SecretClient(new Uri(keyVaultUri), credential);
+//         config.AddAzureKeyVault(client, new AzureKeyVaultConfiguration());
+//     });
+//retrieve connection string from Azure Key Vault
+// var keyVaultClient = new SecretClient(new Uri("https://kv-swapartment-sql.vault.azure.net/"), new DefaultAzureCredential());
+// var connectionString = keyVaultClient.GetSecret("swpt-constr-secret").Value.Value;
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<SwapartmentIdentityDbContext>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+//connect SQL database to the application using the connection string
+builder.Services.AddDbContext<SwapartmentIdentityDbContext>(options =>
+   options.UseSqlServer(conn_str));
 
 var app = builder.Build();
 
@@ -17,6 +55,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
