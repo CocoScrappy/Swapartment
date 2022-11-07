@@ -7,10 +7,10 @@ Template
 - 
 3. Need assistance / figure things out
 - 
+
+
 Weekend Scrum
 ============
-
-
 2022/11/06 Louis
 1. Done / not done since last scrum:
 - Scaffolded demo project
@@ -21,6 +21,16 @@ Weekend Scrum
 - join team's work and build initial project
 3. Need assistance / figure things out
 - connecting to Azure DB
+
+2022/11/03 Alina
+1. Done / not done since last scrum:
+- Created speacial layout for landing page
+- Created cards for property listings
+2. To do until next Scrum:
+- Connect to remote DB
+- Style index page 
+3. Need assistance / figure things out
+- 
 
 
 Day 1
