@@ -1,0 +1,12 @@
+.btn-primary {
+  background-color: var(--bold-main);
+  border-color: var(--bold-main);
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:focus-visible {
+  background-color: #ff4d6d;
+  border-color: #ff4d6d;
+}

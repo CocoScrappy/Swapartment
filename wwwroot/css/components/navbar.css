@@ -1,0 +1,9 @@
+.navbar-light .navbar-brand {
+  font-weight: 700;
+  color: var(--bold-main);
+}
+
+.navbar-light .navbar-brand:hover {
+  font-weight: 700;
+  color: var(--bold-main);
+}

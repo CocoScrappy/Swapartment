@@ -1,0 +1,22 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+}
+
+.banner img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 12px;
+  object-position: bottom;
+}
+
+.banner form {
+  background-color: white;
+  border-radius: 12px;
+  top: 25%;
+  left: 100px;
+  max-width: 500px;
+}

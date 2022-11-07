@@ -12,8 +12,11 @@
 
 <body>
   <header>
-    @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"> *@
-    <nav class="navbar sticky-top navbar-expand-sm navbar-light bg-white border-bottom navbar-toggleable-sm my-2">
+
+    @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+      /Applications/Visual Studio Code.app/Contents/Resources/app/out/vs/code/electron-sandbox/workbench/workbench.html
+    *@
+    <nav class="navbar sticky-top navbar-expand-sm navbar-light bg-white navbar-toggleable-sm my-2">
       <div class="container-fluid">
         <a class="navbar-brand" asp-area="" asp-page="/Index">
           <i class="bi bi-arrows-move"></i>
@@ -38,12 +41,13 @@
         </div>
       </div>
     </nav>
+    <div class="container-fluid">
+      <main role="main" class="pb-3">
+        @RenderBody()
+      </main>
+    </div>
   </header>
-  <div class="container">
-    <main role="main" class="pb-3">
-      @RenderBody()
-    </main>
-  </div>
+
 
   <footer class="border-top footer text-muted">
     <div class="container-fluid">
