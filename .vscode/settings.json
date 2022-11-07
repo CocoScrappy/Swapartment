@@ -1,4 +1,21 @@
 {
-    "appService.preDeployTask": "publish-release",
-    "appService.deploySubpath": "bin/Release/net6.0/publish"
+  "appService.preDeployTask": "publish-release",
+  "appService.deploySubpath": "bin/Release/net6.0/publish",
+  "sqltools.connections": [
+    {
+      "mssqlOptions": {
+        "appName": "SQLTools",
+        "useUTC": true,
+        "encrypt": true
+      },
+      "previewLimit": 50,
+      "server": "swapartment-server.database.windows.net",
+      "port": 1433,
+      "askForPassword": true,
+      "driver": "MSSQL",
+      "database": "SwapartmentSQL",
+      "username": "AdminFSD04",
+      "name": "Swapartment"
+    }
+  ]
 }

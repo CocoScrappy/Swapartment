@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Swapartment.Areas.Identity.Data;
 
 namespace Swapartment.Models
 {
@@ -39,7 +40,7 @@ namespace Swapartment.Models
     public virtual Property Property { get; set; } = default!;
 
     [Required]
-    public virtual ApplicationUser Renter { get; set; } = default!;
+    public virtual SwapartmentUser Renter { get; set; } = default!;
 
   }
 }

@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
 using System;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
@@ -31,31 +30,34 @@ string conn_str = builder.Configuration["sql_con_str"] ?? throw new InvalidOpera
 // var keyVaultClient = new SecretClient(new Uri("https://kv-swapartment-sql.vault.azure.net/"), new DefaultAzureCredential());
 // var connectionString = keyVaultClient.GetSecret("swpt-constr-secret").Value.Value;
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+//connect SQL database to the application using the connection string
+builder.Services.AddDbContext<SwapartmentIdentityDbContext>(options =>
+   options.UseSqlServer(conn_str));
+
+builder.Services.AddDefaultIdentity<SwapartmentUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<SwapartmentIdentityDbContext>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-//connect SQL database to the application using the connection string
-builder.Services.AddDbContext<SwapartmentIdentityDbContext>(options =>
-   options.UseSqlServer(conn_str));
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+  app.UseExceptionHandler("/Error");
+  // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+  app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthentication();;
+app.UseAuthentication(); ;
 
 app.UseAuthorization();
 

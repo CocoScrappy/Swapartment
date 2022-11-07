@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Swapartment.Areas.Identity.Data;
 
 namespace Swapartment.Models
 {
@@ -63,7 +64,7 @@ namespace Swapartment.Models
 
     [Required]
     [Display(Name = "Owner")]
-    public virtual ApplicationUser ApplicationUser { get; set; } = default!;
+    public virtual SwapartmentUser SwapartmentUser { get; set; } = default!;
 
     [Display(Name = "Property Tags")]
     public virtual ICollection<PropertyTag> PropertyTags { get; set; } = default!;
