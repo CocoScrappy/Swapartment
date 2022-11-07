@@ -1,3 +1,27 @@
+/* IMPORT CUSTOM CSS VARIABLES */
+@import url("variables.css");
+
+/* IMPORT FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+/*
+font-family: 'Quicksand',sans-serif;
+*/
+
+/* IMPORT BOOTSTRAP ICONS */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+/* IMPORT COMPONENTS */
+@import url("components/navbar.css");
+@import url("components/banner.css");
+@import url("components/button-red.css");
+@import url("components/listing-cards.css");
+
+/* IMPORT LAYOUTS */
+@import url("layouts/card-grid.css");
+
+/* IMPORT UTILITIES */
+
+
 html {
   font-size: 14px;
 }
@@ -15,4 +39,5 @@ html {
 
 body {
   margin-bottom: 60px;
+  font-family: 'Quicksand', sans-serif;
 }

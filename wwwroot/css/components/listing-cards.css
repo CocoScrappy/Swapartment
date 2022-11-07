@@ -1,0 +1,19 @@
+.card-img,
+.card-img-top {
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card {
+  border: none;
+}
+
+.card-text,
+.card-title {
+  margin: 0;
+}
+
+.card p {
+  margin: 0;
+}
