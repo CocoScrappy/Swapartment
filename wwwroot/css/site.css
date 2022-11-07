@@ -16,6 +16,7 @@ font-family: 'Quicksand',sans-serif;
 @import url("components/banner.css");
 @import url("components/button-red.css");
 @import url("components/listing-cards.css");
+@import url("components/footer.css");
 
 /* IMPORT LAYOUTS */
 @import url("layouts/card-grid.css");
