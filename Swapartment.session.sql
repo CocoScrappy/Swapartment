@@ -1,2 +1,2 @@
 Select *
-from AspNetRoles;
+from Properties;

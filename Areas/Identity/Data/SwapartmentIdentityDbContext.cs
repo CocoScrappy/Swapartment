@@ -28,5 +28,9 @@ public class SwapartmentIdentityDbContext : IdentityDbContext<SwapartmentUser>
 
     //builder.Seed();
   }
+  public virtual DbSet<Property> Properties { get; set; }
+  public virtual DbSet<PropertyTag> PropertyTags { get; set; }
+  public virtual DbSet<PropertyImage> PropertyImages { get; set; }
+  public virtual DbSet<Rental> Rentals { get; set; }
 
 }
