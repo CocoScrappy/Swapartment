@@ -6,22 +6,27 @@ using Swapartment.Models;
 
 namespace Swapartment.Areas.Identity.Data;
 
-public class SwapartmentIdentityDbContext : IdentityDbContext<IdentityUser>
+public class SwapartmentIdentityDbContext : IdentityDbContext<SwapartmentUser>
 {
-    public SwapartmentIdentityDbContext(DbContextOptions<SwapartmentIdentityDbContext> options)
-        : base(options)
-    {
-    }
+  public SwapartmentIdentityDbContext(DbContextOptions<SwapartmentIdentityDbContext> options)
+      : base(options)
+  {
+  }
 
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        base.OnModelCreating(builder);
-        // Customize the ASP.NET Identity model and override the defaults if needed.
-        // For example, you can rename the ASP.NET Identity table names and more.
-        // Add your customizations after calling base.OnModelCreating(builder);
-        
+  protected override void OnModelCreating(ModelBuilder builder)
+  {
 
-        //builder.Seed();
-    }
+    #region RoleSeed
+    builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "USER", NormalizedName = "USER" }, new IdentityRole { Name = "ADMIN", NormalizedName = "ADMIN" });
+    #endregion
+
+    base.OnModelCreating(builder);
+    // Customize the ASP.NET Identity model and override the defaults if needed.
+    // For example, you can rename the ASP.NET Identity table names and more.
+    // Add your customizations after calling base.OnModelCreating(builder);
+
+
+    //builder.Seed();
+  }
 
 }

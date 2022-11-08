@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace Swapartment.Models
+namespace Swapartment.Areas.Identity.Data
 {
-  public class ApplicationUser : IdentityUser
+  public class SwapartmentUser : IdentityUser
   {
     //Nullable in case registration is in 2 forms
     public string? Bio { get; set; } = default!;
