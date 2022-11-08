@@ -15,7 +15,7 @@
 
 .search-results .map-container {
   flex: 1 1 auto;
-  background-color: aqua;
+  /* background-color: aqua; */
   height: calc(100vh - 60px);
   position: sticky;
   top: 60px;
