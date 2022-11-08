@@ -196,6 +196,11 @@
   mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpbmFnZWUiLCJhIjoiY2tjaG14MTlhMGh4ejJxbzB1dmxtbXhndSJ9.1n05xXhvacdhS-dWPWaH6Q';
   var map = new mapboxgl.Map({
     container: 'map',
+    center: [-123.1121, 49.2569],// Vancouver - Coordinates of search location go here
+    zoom: 10,
     style: 'mapbox://styles/mapbox/streets-v11'
   });
+
+  map.addControl(
+    new mapboxgl.NavigationControl());
 </script>
