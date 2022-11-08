@@ -1,10 +1,10 @@
 ﻿@page
 @model IndexModel
 @{
-  ViewData["Title"] = "Home page";
-  Layout = "_LayoutLanding";
+  ViewData["Title"] = "Home";
+  @* Layout = "_LayoutLanding"; *@
 }
-<div class="banner position-relative">
+<header class="banner position-relative mb-3">
   <img src="/images/home_splash3.jpg" alt="">
 
   <form class="position-absolute shadow p-5">
@@ -37,13 +37,14 @@
       <label for="floatingInput">Guests</label>
     </div>
     <div class="d-grid">
-      <button type="submit" class="btn btn-primary btn-lg">
+      @* Temporary - For testing purposes *@
+      <button type="submit" class="btn btn-primary btn-lg" asp-page="/SearchResults">
         <i class="bi bi-search"></i>
         Search
       </button>
     </div>
   </form>
-</div>
+</header>
 
 <h2>Example Listings</h2>
 <div class="card-grid">
