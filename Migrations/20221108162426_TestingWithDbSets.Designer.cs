@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Swapartment.Areas.Identity.Data;
 
@@ -11,9 +12,10 @@ using Swapartment.Areas.Identity.Data;
 namespace Swapartment.Migrations
 {
     [DbContext(typeof(SwapartmentIdentityDbContext))]
-    partial class SwapartmentIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221108162426_TestingWithDbSets")]
+    partial class TestingWithDbSets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +53,15 @@ namespace Swapartment.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "330e748c-9f94-46d9-8e75-335792f43c00",
-                            ConcurrencyStamp = "3d530e9c-aef2-4b0f-84fd-2aa782bda957",
+                            Id = "b0452d7b-07af-4b4f-bfff-d327ee29a8c0",
+                            ConcurrencyStamp = "8bad4171-d9ef-448c-b3ec-9eb949e42124",
                             Name = "USER",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "97df5b7f-000a-49fc-b0ec-423b604dc8a5",
-                            ConcurrencyStamp = "a6702384-a7ae-4341-8e37-5d5a9e345601",
+                            Id = "eb11abe2-c3b7-49ad-9af2-fbf7d3bc904b",
+                            ConcurrencyStamp = "ebf07507-df78-4107-a302-d62e3fba0bf0",
                             Name = "ADMIN",
                             NormalizedName = "ADMIN"
                         });
@@ -387,10 +389,11 @@ namespace Swapartment.Migrations
                     b.Property<decimal>("PriceTotal")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("PropertyId")
+                    b.Property<int>("PropertyId")
                         .HasColumnType("int");
 
                     b.Property<string>("RenterId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("StartDate")
@@ -488,11 +491,15 @@ namespace Swapartment.Migrations
                 {
                     b.HasOne("Swapartment.Models.Property", "Property")
                         .WithMany()
-                        .HasForeignKey("PropertyId");
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Swapartment.Areas.Identity.Data.SwapartmentUser", "Renter")
                         .WithMany()
-                        .HasForeignKey("RenterId");
+                        .HasForeignKey("RenterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Property");
 

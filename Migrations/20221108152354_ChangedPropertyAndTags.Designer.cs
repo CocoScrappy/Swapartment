@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Swapartment.Areas.Identity.Data;
 
@@ -11,9 +12,10 @@ using Swapartment.Areas.Identity.Data;
 namespace Swapartment.Migrations
 {
     [DbContext(typeof(SwapartmentIdentityDbContext))]
-    partial class SwapartmentIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221108152354_ChangedPropertyAndTags")]
+    partial class ChangedPropertyAndTags
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +53,15 @@ namespace Swapartment.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "330e748c-9f94-46d9-8e75-335792f43c00",
-                            ConcurrencyStamp = "3d530e9c-aef2-4b0f-84fd-2aa782bda957",
+                            Id = "061adee3-27aa-4d55-b5a6-bfea1ea5ac1d",
+                            ConcurrencyStamp = "4e79bac5-1369-41e8-b553-7888924e8589",
                             Name = "USER",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "97df5b7f-000a-49fc-b0ec-423b604dc8a5",
-                            ConcurrencyStamp = "a6702384-a7ae-4341-8e37-5d5a9e345601",
+                            Id = "a4706dc6-4e24-4fb6-85bf-b2ecc539f458",
+                            ConcurrencyStamp = "85e26750-fd66-45a3-b5e4-d71fc8c4efaf",
                             Name = "ADMIN",
                             NormalizedName = "ADMIN"
                         });
@@ -252,162 +254,6 @@ namespace Swapartment.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Swapartment.Models.Property", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<decimal>("DailyRate")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("NumberOfBathrooms")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumberOfBedrooms")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostalCode")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("StreetAddress")
-                        .IsRequired()
-                        .HasMaxLength(75)
-                        .HasColumnType("nvarchar(75)");
-
-                    b.Property<string>("SwapartmentUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("UnitNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SwapartmentUserId");
-
-                    b.ToTable("Properties");
-                });
-
-            modelBuilder.Entity("Swapartment.Models.PropertyImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("PropertyId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PropertyId");
-
-                    b.ToTable("PropertyImages");
-                });
-
-            modelBuilder.Entity("Swapartment.Models.PropertyTag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("IconUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<int?>("PropertyId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PropertyId");
-
-                    b.ToTable("PropertyTags");
-                });
-
-            modelBuilder.Entity("Swapartment.Models.Rental", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Feedback")
-                        .HasMaxLength(5000)
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("PriceTotal")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("PropertyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RenterId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("isPaid")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PropertyId");
-
-                    b.HasIndex("RenterId");
-
-                    b.ToTable("Rentals");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -457,53 +303,6 @@ namespace Swapartment.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Swapartment.Models.Property", b =>
-                {
-                    b.HasOne("Swapartment.Areas.Identity.Data.SwapartmentUser", "SwapartmentUser")
-                        .WithMany()
-                        .HasForeignKey("SwapartmentUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("SwapartmentUser");
-                });
-
-            modelBuilder.Entity("Swapartment.Models.PropertyImage", b =>
-                {
-                    b.HasOne("Swapartment.Models.Property", null)
-                        .WithMany("Images")
-                        .HasForeignKey("PropertyId");
-                });
-
-            modelBuilder.Entity("Swapartment.Models.PropertyTag", b =>
-                {
-                    b.HasOne("Swapartment.Models.Property", null)
-                        .WithMany("PropertyTags")
-                        .HasForeignKey("PropertyId");
-                });
-
-            modelBuilder.Entity("Swapartment.Models.Rental", b =>
-                {
-                    b.HasOne("Swapartment.Models.Property", "Property")
-                        .WithMany()
-                        .HasForeignKey("PropertyId");
-
-                    b.HasOne("Swapartment.Areas.Identity.Data.SwapartmentUser", "Renter")
-                        .WithMany()
-                        .HasForeignKey("RenterId");
-
-                    b.Navigation("Property");
-
-                    b.Navigation("Renter");
-                });
-
-            modelBuilder.Entity("Swapartment.Models.Property", b =>
-                {
-                    b.Navigation("Images");
-
-                    b.Navigation("PropertyTags");
                 });
 #pragma warning restore 612, 618
         }

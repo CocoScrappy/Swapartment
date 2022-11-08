@@ -1,3 +1,7 @@
+nav {
+  height: 60px;
+}
+
 .navbar-light .navbar-brand {
   font-weight: 700;
   color: var(--bold-main);

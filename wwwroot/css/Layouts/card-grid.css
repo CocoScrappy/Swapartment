@@ -4,3 +4,19 @@
   grid-auto-rows: minmax(100px, auto);
   gap: 20px;
 }
+
+.search-results {
+  gap: 20px;
+}
+
+.search-results .card-grid {
+  flex: 0 1 55%;
+}
+
+.search-results .map-container {
+  flex: 1 1 auto;
+  /* background-color: aqua; */
+  height: calc(100vh - 60px);
+  position: sticky;
+  top: 60px;
+}

@@ -8,6 +8,7 @@ using Swapartment.Areas.Identity.Data;
 
 namespace Swapartment.Models
 {
+  [Table("Rentals")]
   public class Rental
   {
     public int Id { get; set; }
@@ -36,11 +37,11 @@ namespace Swapartment.Models
     [StringLength(5000, MinimumLength = 10)]
     public string? Feedback { get; set; } = default!;
 
-    [Required]
-    public virtual Property Property { get; set; } = default!;
 
-    [Required]
-    public virtual SwapartmentUser Renter { get; set; } = default!;
+    public virtual Property? Property { get; set; } = default!;
+
+
+    public virtual SwapartmentUser? Renter { get; set; } = default!;
 
   }
 }

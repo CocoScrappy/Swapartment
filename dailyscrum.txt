@@ -7,6 +7,32 @@ Template
 - 
 3. Need assistance / figure things out
 - 
+
+8th Nov
+========
+2022/11/08 DMITRY
+1. Done / not done since last scrum:
+- integrate code with that of Louis
+- look into Azure Blob - completed api tutorial from notes but too much unnecessary complexity to it
+- switched deployment to deploying from Git instead of my local computer - resolve issues
+2. To do until next Scrum:
+- redo blob upload
+- start blob download and display
+- solve git deployment issues on App Service
+3. Need assistance / figure things out
+- NA
+
+
+2022/11/07 Louis
+1. Done / not done since last scrum:
+- worked on Stripe side project
+2. To do until next Scrum:
+- finish Stripe side implementation
+- seeding database / dynamic list of properties
+3. Need assistance / figure things out
+- morale support
+
+
 07th Nov
 ===========
 2022/11/07 DMITRY
