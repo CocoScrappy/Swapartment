@@ -4,10 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Swapartment.Areas.Identity.Data;
 
 namespace Swapartment.Models
 {
+
+  [Table("Properties")]
   public class Property
   {
     public int Id { get; set; }
@@ -68,5 +72,7 @@ namespace Swapartment.Models
 
     [Display(Name = "Property Tags")]
     public virtual ICollection<PropertyTag> PropertyTags { get; set; } = default!;
+
+    public virtual ICollection<PropertyImage> Images { get; set; } = default!;
   }
 }

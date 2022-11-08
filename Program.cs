@@ -5,6 +5,8 @@ using System;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 using Swapartment.Areas.Identity.Data;
+using Microsoft.Extensions.Configuration.UserSecrets;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
@@ -13,7 +15,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Get values from the config given their key and their target type.
 string conn_str = builder.Configuration["sql_con_str"] ?? throw new InvalidOperationException("Connection string 'conn_str' not found.");
-
 // Host.CreateDefaultBuilder(args)
 //     .ConfigureAppConfiguration((context, config) =>
 //     {

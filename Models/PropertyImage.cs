@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Swapartment.Models
 {
+  [Table("PropertyImages")]
   public class PropertyImage
   {
     public int Id { get; set; }
@@ -13,7 +15,5 @@ namespace Swapartment.Models
     [Required]
     public string ImageUrl { get; set; } = default!;
 
-    [Required]
-    public virtual Property Property { get; set; } = default!;
   }
 }
