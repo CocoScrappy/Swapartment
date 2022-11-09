@@ -10,7 +10,7 @@ Template
 
 9th Nov
 ========
-2022/11/08 DMITRY
+2022/11/09 DMITRY
 1. Done / not done since last scrum:
 - redo blob upload - almost-done
 - start blob download and display - not-done
