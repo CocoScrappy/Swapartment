@@ -25,7 +25,7 @@ namespace Swapartment.Pages_PropertyTags
     {
       if (_context.PropertyTags != null)
       {
-        PropertyTag = await _context.PropertyTags.ToListAsync();
+        PropertyTag = await _context.PropertyTags.OrderBy(p => p.Name).ToListAsync();
       }
     }
   }
