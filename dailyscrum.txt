@@ -10,6 +10,17 @@ Template
 
 9th Nov
 ========
+2022/11/08 DMITRY
+1. Done / not done since last scrum:
+- redo blob upload - almost-done
+- start blob download and display - not-done
+- solve git deployment issues on App Service - not done
+2. To do until next Scrum:
+- finish blob upload
+- blob download and display
+- deploy app in App Service
+3. Need assistance / figure things out
+- debug upload
 
 2022/11/09 Louis
 1. Done / not done since last scrum:
