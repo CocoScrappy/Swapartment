@@ -23,15 +23,9 @@ namespace Swapartment.Pages_Rentals
       _context = context;
       _userManager = userManager;
     }
-    // Property property { get; set; }
-    //private Rental _rental;
+
     [BindProperty]
     public Rental Rental { get; set; }
-
-    // [BindProperty]
-    //    public int id { get; set; }
-
-
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
@@ -44,9 +38,6 @@ namespace Swapartment.Pages_Rentals
 
       return Page();
     }
-
-
-
 
     // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
     public async Task<IActionResult> OnPostAsync(int id)

@@ -72,16 +72,21 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+
     <div class="card-body">
       <div class="d-flex justify-content-between">
         <p class="card-title">City, State, Country</p>
         <p class="card-text"><i class="bi bi-star-fill"></i> 4.8</p>
       </div>
-      <p class="card-text text-muted">Property Title</p>
+      <a asp-area="" asp-page="./Properties/Details" asp-route-id="1">
+        <p class="card-text text-muted">Property Title</p>
+      </a>
       <p class="card-text text-muted">Number of bedrooms</p>
       <p class="card-text">$ Price <small class="text-muted">night</small></p>
     </div>
+
   </div>
+
   @* Card end *@
 
   @* Card start *@

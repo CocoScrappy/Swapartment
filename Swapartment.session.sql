@@ -1,2 +1,2 @@
 Select *
-from Rentals;
+FROM Rentals;

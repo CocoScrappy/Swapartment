@@ -28,6 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Rental[0].Feedback)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].Property.Title)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -49,6 +52,10 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Feedback)
+                </td>
+                <td>
+                    <a asp-page="../Properties/Details" asp-route-id="@item.Property.Id">@Html.DisplayFor(modelItem =>
+                    item.Property.Title)</a>
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
