@@ -38,7 +38,7 @@ namespace Swapartment.Pages_Properties
     public async Task<IActionResult> OnPostAsync()
     {
       var currentUser = await _userManager.GetUserAsync(User);
-      var role = await _userManager.GetRolesAsync(currentUser);
+
       Property.SwapartmentUser = currentUser;
       if (!ModelState.IsValid || _context.Properties == null || Property == null)
       {
