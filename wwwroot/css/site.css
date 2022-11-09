@@ -17,11 +17,13 @@ font-family: 'Quicksand',sans-serif;
 @import url("components/button-red.css");
 @import url("components/listing-cards.css");
 @import url("components/footer.css");
+@import url("components/bg-image.css");
 
 /* IMPORT LAYOUTS */
 @import url("layouts/card-grid.css");
 
 /* IMPORT UTILITIES */
+@import url("utilities.css");
 
 .material-symbols-outlined {
   font-variation-settings:
