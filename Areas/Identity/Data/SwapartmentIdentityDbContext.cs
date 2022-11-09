@@ -33,4 +33,6 @@ public class SwapartmentIdentityDbContext : IdentityDbContext<SwapartmentUser>
   public virtual DbSet<PropertyImage> PropertyImages { get; set; }
   public virtual DbSet<Rental> Rentals { get; set; }
 
+  
+
 }

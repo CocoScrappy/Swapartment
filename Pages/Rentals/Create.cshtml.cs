@@ -17,12 +17,21 @@ namespace Swapartment.Pages_Rentals
     private readonly SwapartmentIdentityDbContext _context;
     private readonly UserManager<SwapartmentUser> _userManager;
 
-    public Property? Property { get; set; }
+
     public CreateModel(SwapartmentIdentityDbContext context, UserManager<SwapartmentUser> userManager)
     {
       _context = context;
       _userManager = userManager;
     }
+    // Property property { get; set; }
+    //private Rental _rental;
+    [BindProperty]
+    public Rental Rental { get; set; }
+
+    // [BindProperty]
+    //    public int id { get; set; }
+
+
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
@@ -32,21 +41,15 @@ namespace Swapartment.Pages_Rentals
         return NotFound();
       }
 
-      var property = await _context.Properties.FirstOrDefaultAsync(m => m.Id == id);
-      if (property == null)
-      {
-        return NotFound();
-      }
-      Property = property;
+
       return Page();
     }
 
-    [BindProperty]
-    public Rental Rental { get; set; } = default!;
+
 
 
     // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-    public async Task<IActionResult> OnPostAsync()
+    public async Task<IActionResult> OnPostAsync(int id)
     {
       if (!ModelState.IsValid || _context.Rentals == null || Rental == null)
       {
@@ -55,8 +58,14 @@ namespace Swapartment.Pages_Rentals
 
       /* Stripe Stuff Would Go Here */
 
+      var property = await _context.Properties.FirstOrDefaultAsync(m => m.Id == id);
+      if (property == null)
+      {
+        return NotFound();
+      }
       //Get property ID and Current User Id Into Rental.
-      Rental.Property = Property;
+      Rental.Property = property;
+
       Rental.Renter = await _userManager.GetUserAsync(User);
       _context.Rentals.Add(Rental);
       await _context.SaveChangesAsync();
