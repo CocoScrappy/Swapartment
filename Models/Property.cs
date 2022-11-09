@@ -66,13 +66,12 @@ namespace Swapartment.Models
     [StringLength(50, MinimumLength = 2)] // min 2 in case we use initials
     public string Country { get; set; } = default!;
 
-    [Required]
     [Display(Name = "Owner")]
-    public virtual SwapartmentUser SwapartmentUser { get; set; } = default!;
+    public virtual SwapartmentUser? SwapartmentUser { get; set; } = default!;
 
     [Display(Name = "Property Tags")]
-    public virtual ICollection<PropertyTag> PropertyTags { get; set; } = default!;
+    public virtual ICollection<PropertyTag>? PropertyTags { get; set; } = default!;
 
-    public virtual ICollection<PropertyImage> Images { get; set; } = default!;
+    public virtual ICollection<PropertyImage>? Images { get; set; } = default!;
   }
 }
