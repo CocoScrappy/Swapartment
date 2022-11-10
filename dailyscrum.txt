@@ -8,6 +8,20 @@ Template
 3. Need assistance / figure things out
 - 
 
+10th Nov
+=========
+
+
+2022/11/10 Louis
+1. Done / not done since last scrum:
+- talked to Matthew abour Stripe
+- Made Rental index = user's rental history
+- added property name / link to each rental propertyDetails
+2. To do until next Scrum:
+- Add Authorize tags to user restricted actions
+3. Need assistance / figure things out
+- Maybe Stripe, idk!
+
 9th Nov
 ========
 2022/11/09 DMITRY
