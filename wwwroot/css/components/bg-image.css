@@ -1,0 +1,13 @@
+.bg-image {
+  background-image: url("/images/home_splash2.jpg");
+  background-position: center;
+  border-radius: 12px;
+  height: calc(100vh - 140px);
+}
+
+.bg-image>.shadow {
+  background-color: white;
+  border-radius: 12px;
+  height: 100%;
+  width: 800px;
+}

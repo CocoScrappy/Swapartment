@@ -8,6 +8,45 @@ Template
 3. Need assistance / figure things out
 - 
 
+9th Nov
+========
+2022/11/09 DMITRY
+1. Done / not done since last scrum:
+- redo blob upload - almost-done
+- start blob download and display - not-done
+- solve git deployment issues on App Service - not done
+2. To do until next Scrum:
+- finish blob upload
+- blob download and display
+- deploy app in App Service
+3. Need assistance / figure things out
+- debug upload
+
+2022/11/09 Louis
+1. Done / not done since last scrum:
+- UserId in Rental creation
+- UserId in property creation
+- linked property details to rental creation
+- worked on displaying tag dynamically with team
+2. To do until next Scrum:
+- find a way to get propertyId in Rental Creation
+- dynamically list properties?
+3. Need assistance / figure things out
+- persist info through pages when it can't be held in model?
+
+2022/11/09 Alina
+1. Done / not done since last scrum:
+- Worked with team to display the html for Google's material design icons for property tags on page
+- Saved 100 photos for the property images in our db
+- Created property tags
+2. To do until next Scrum:
+- Finish styling login/logout/property tags pages
+- Style individual property page
+- Stripe?
+- Integrate more mapbox features
+3. Need assistance / figure things out
+- 
+
 8th Nov
 ========
 2022/11/08 DMITRY
@@ -23,7 +62,7 @@ Template
 - NA
 
 
-2022/11/07 Louis
+2022/11/08 Louis
 1. Done / not done since last scrum:
 - worked on Stripe side project
 2. To do until next Scrum:
@@ -31,6 +70,16 @@ Template
 - seeding database / dynamic list of properties
 3. Need assistance / figure things out
 - morale support
+
+2022/11/08 Alina
+1. Done / not done since last scrum:
+- Split layout between results and map
+- Integrated mapbox
+2. To do until next Scrum:
+- Style more pages
+- Integrate more mapbox features
+3. Need assistance / figure things out
+- 
 
 
 07th Nov
@@ -56,6 +105,17 @@ Template
 - join team's work and build initial project
 3. Need assistance / figure things out
 - connecting to Azure DB
+
+2022/11/07 Alina
+1. Done / not done since last scrum:
+- Created Search Results page
+- Split layout between results and map
+- Integrated mapbox
+2. To do until next Scrum:
+- Style more pages
+- Integrate more mapbox features
+3. Need assistance / figure things out
+- 
 
 
 Weekend Scrum

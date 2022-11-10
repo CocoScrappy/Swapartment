@@ -2,42 +2,75 @@
 @model Swapartment.Pages_PropertyTags.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+  ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="bg-image d-flex justify-content-center align-items-center mb-3 p-5">
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PropertyTag[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PropertyTag[0].IconUrl)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.PropertyTag)
-        {
-            <tr>
+  <div class="shadow p-5">
+
+    <div class="d-flex flex-column height-100">
+
+      <div>
+        <h2>Control Panel</h2>
+
+        @* <p>Live wherever you want, whenever you want. Book a home on Swapartment.</p> *@
+        <div class="d-flex flex-column flex-md-row mb-2 justify-content-end">
+          <a class="btn btn-primary flex-shrink-0" asp-page="./Create">
+            <i class="bi bi-plus-circle"></i>
+            New amenity
+          </a>
+        </div>
+      </div>
+
+      <div class="overflow-auto">
+        <table class="table table-responsive">
+
+          <tbody>
+            @foreach (var item in Model.PropertyTag)
+            {
+              <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                  @Html.Raw(item.IconUrl)
                 </td>
                 <td>
-                    @Html.Raw(item.IconUrl)
+                  @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <td class="text-center">
+                  <a class="text-muted m-2" asp-page="./Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a>
+                  <a class="text-muted" asp-page="./Delete" asp-route-id="@item.Id"><i class="bi bi-trash3"></i></a>
                 </td>
-            </tr>
-        }
-    </tbody>
-</table>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      @* End table *@
+
+    </div>
+    @* end flexbox *@
+
+  </div>
+  @* End shadow container *@
+
+  <!-- Modal - WIP -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+@* End bg image container *@

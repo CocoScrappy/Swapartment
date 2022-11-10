@@ -1,2 +1,2 @@
 Select *
-from Properties;
+FROM Rentals;

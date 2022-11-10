@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,12 @@ namespace Swapartment.Pages_Rentals
   public class IndexModel : PageModel
   {
     private readonly Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext _context;
+    private readonly UserManager<SwapartmentUser> _userManager;
 
-    public IndexModel(Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext context)
+    public IndexModel(Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext context, UserManager<SwapartmentUser> userManager)
     {
       _context = context;
+      _userManager = userManager;
     }
 
     public IList<Rental> Rental { get; set; } = default!;
@@ -25,7 +28,8 @@ namespace Swapartment.Pages_Rentals
     {
       if (_context.Rentals != null)
       {
-        Rental = await _context.Rentals.ToListAsync();
+        var currentUser = await _userManager.GetUserAsync(User);
+        Rental = await _context.Rentals.Include(r => r.Property).Where(r => r.Renter == currentUser).ToListAsync();
       }
     }
   }
