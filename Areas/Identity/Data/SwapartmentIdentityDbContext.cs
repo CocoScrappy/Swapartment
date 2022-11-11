@@ -25,14 +25,11 @@ public class SwapartmentIdentityDbContext : IdentityDbContext<SwapartmentUser>
     // For example, you can rename the ASP.NET Identity table names and more.
     // Add your customizations after calling base.OnModelCreating(builder);
 
-
     //builder.Seed();
   }
   public virtual DbSet<Property> Properties { get; set; }
   public virtual DbSet<PropertyTag> PropertyTags { get; set; }
   public virtual DbSet<PropertyImage> PropertyImages { get; set; }
   public virtual DbSet<Rental> Rentals { get; set; }
-
-  
 
 }

@@ -61,7 +61,7 @@ namespace Swapartment.Pages_Rentals
       _context.Rentals.Add(Rental);
       await _context.SaveChangesAsync();
 
-      return RedirectToPage("./Index");
+      return RedirectToPage("./Details/", null, new { id = Rental.Id });
     }
   }
 }
