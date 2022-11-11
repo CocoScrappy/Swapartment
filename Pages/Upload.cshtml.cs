@@ -11,8 +11,11 @@ using Swapartment.Helpers;
 using System.Configuration;
 using Microsoft.Extensions.Options;
 using Azure.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Swapartment.Areas.Identity.Data;
 
 namespace Swapartment.Pages;
+
 
 public class UploadModel : PageModel
 {
@@ -20,18 +23,21 @@ public class UploadModel : PageModel
 
     [BindProperty]
     public IFormFile Upload { get; set; }
+    public IFormFileCollection Uploads { get; set; }
+
+
     public UploadModel(IOptions<AzureStorageConfig> config, IWebHostEnvironment env)
       //public UploadModel(IOptions config, IWebHostEnvironment env)
     {
-        if (!env.IsDevelopment())
+        if (env.IsDevelopment())
         {
             _containerClient = new BlobContainerClient(config.Value.BlobAccountName, config.Value.BlobContainerName);
         }
         else
         {
             string containerEndpoint = string.Format("https://{0}.blob.core.windows.net/{1}",
-                                                    config.Value.BlobAccountName,
-                                                   config.Value.BlobContainerName);
+                config.Value.BlobAccountName,
+                config.Value.BlobContainerName);
             _containerClient = new BlobContainerClient(new Uri(containerEndpoint), new DefaultAzureCredential());
         }
     }
@@ -55,7 +61,7 @@ public class UploadModel : PageModel
         }
         catch (Exception e)
         {
-            throw e;
+            Console.WriteLine(e.Message);
         }
 
         return Page();

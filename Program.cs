@@ -14,10 +14,9 @@ using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
 
-
-
+try {
 // Get values from the config given their key and their target type.
-string conn_str = builder.Configuration["sql_con_str"] ?? throw new InvalidOperationException("Connection string 'conn_str' not found.");
+var conn_str = builder.Configuration["sql_con_str"] ?? throw new InvalidOperationException("Connection string 'sql_con_str' not found.");
 
 builder.Services.AddDbContext<SwapartmentIdentityDbContext>(options =>
    options.UseSqlServer(conn_str));
@@ -28,8 +27,8 @@ builder.Services.AddDefaultIdentity<SwapartmentUser>(options => options.SignIn.R
 
 
 //builder.Services.AddOptions<AzureStorageConfig>().Bind(Configuration.GetSection("AzureStorageConfig"));//solving upload.cshtml.cs IOptions problem - actually didn't solve it
-var Configuration = builder.Configuration;
-builder.Services.Configure<AzureStorageConfig>(Configuration.GetSection("AzureStorageConfig"));
+
+builder.Services.Configure<AzureStorageConfig>(builder.Configuration.GetSection("AzureStorageConfig"));
 // Add services to the container.
 builder.Services.AddRazorPages();
 
@@ -72,3 +71,7 @@ app.Run();
 // var connectionString = keyVaultClient.GetSecret("swpt-constr-secret").Value.Value;
 
 //connect SQL database to the application using the connection string
+
+} catch (Exception e) {
+    Console.WriteLine(e.Message);
+}
