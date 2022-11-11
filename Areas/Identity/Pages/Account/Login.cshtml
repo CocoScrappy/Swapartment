@@ -10,7 +10,7 @@
   <div class="d-flex flex-grow-1 justify-content-center align-items-center">
     <form class="p-5" id="account" method="post">
       <h2>Let the adventure begin</h2>
-      <p>You're a few details away from finding someplace really special</p>
+      <p>You're a few details away from finding a really special place.</p>
       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
       @* <div class="form-floating mb-3">
@@ -25,37 +25,42 @@
         <label asp-for="Input.Email" for="floatingInput" class="form-label"></label>
         <span asp-validation-for="Input.Email" class="text-danger"></span>
       </div>
-      <div class="form-floating">
+      <div class="form-floating mb-3">
         <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
         <label asp-for="Input.Password" class="form-label"></label>
         <span asp-validation-for="Input.Password" class="text-danger"></span>
       </div>
-      <div>
+
+      <div class="d-flex justify-content-between mb-3">
         <div class="checkbox">
           <label asp-for="Input.RememberMe" class="form-label">
             <input class="form-check-input" asp-for="Input.RememberMe" />
             @Html.DisplayNameFor(m => m.Input.RememberMe)
           </label>
         </div>
+
+        <a id="forgot-password" asp-page="./ForgotPassword" class="text-end text-decoration-none link-dark">Forgot your
+          password?</a>
+
       </div>
+
       <div>
         <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
       </div>
-      <div>
-        <p>
-          <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-        </p>
-        <p>
-          <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Don't have an account? Sign up!</a>
-        </p>
-        <p>
-          <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-        </p>
+
+      <div class="d-flex flex-column mt-5 text-center">
+
+        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="text-decoration-none link-dark">Don't
+          have an account? <span class="fw-bold">Sign up!</span></a>
+
+        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" class="text-decoration-none link-dark">Resend
+          email confirmation</a>
+
       </div>
     </form>
   </div>
 
-  <img src="/images/home_splash4.jpg" alt="">
+  <img src="/images/home_splash4.jpg" alt="beautiful home by the sea" class="d-none d-lg-block">
 </div>
 
 

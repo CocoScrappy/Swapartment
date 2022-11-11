@@ -1,7 +1,7 @@
 @page "{id:int}"
 @model Swapartment.Pages_Rentals.CreateModel
 @{
-    ViewData["Title"] = "Create";
+  ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
@@ -9,49 +9,54 @@
 <h4>Rental</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Rental.StartDate" class="control-label"></label>
-                <input asp-for="Rental.StartDate" class="form-control" />
-                <span asp-validation-for="Rental.StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rental.EndDate" class="control-label"></label>
-                <input asp-for="Rental.EndDate" class="form-control" />
-                <span asp-validation-for="Rental.EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rental.PriceTotal" class="control-label"></label>
-                <input asp-for="Rental.PriceTotal" class="form-control" />
-                <span asp-validation-for="Rental.PriceTotal" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Rental.isPaid" /> @Html.DisplayNameFor(model =>
-                    model.Rental.isPaid)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rental.Feedback" class="control-label"></label>
-                <input asp-for="Rental.Feedback" class="form-control" />
-                <span asp-validation-for="Rental.Feedback" class="text-danger"></span>
-            </div>
-            @* <div class="form-group">
-                <label asp-for="Rental.Property.City" class="control-label"></label>
-                <input asp-for="Rental.Property.City" class="form-control" />
-                <span asp-validation-for="Rental.Property.City" class="text-danger"></span>
-                </div> *@
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+  <div class="col-md-4">
+    <form method="post">
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+      <div class="form-group">
+        <label asp-for="Rental.StartDate" class="control-label"></label>
+        <input asp-for="Rental.StartDate" class="form-control" />
+        <span asp-validation-for="Rental.StartDate" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="Rental.EndDate" class="control-label"></label>
+        <input asp-for="Rental.EndDate" class="form-control" />
+        <span asp-validation-for="Rental.EndDate" class="text-danger"></span>
+      </div>
+      <div class="form-group">
+        <label asp-for="Rental.PriceTotal" class="control-label"></label>
+        <input asp-for="Rental.PriceTotal" class="form-control" />
+        <span asp-validation-for="Rental.PriceTotal" class="text-danger"></span>
+      </div>
+      <div class="form-group form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" asp-for="Rental.isPaid" /> @Html.DisplayNameFor(model =>
+          model.Rental.isPaid)
+        </label>
+      </div>
+      <div class="form-group">
+        <label asp-for="Rental.Feedback" class="control-label"></label>
+        <input asp-for="Rental.Feedback" class="form-control" />
+        <span asp-validation-for="Rental.Feedback" class="text-danger"></span>
+      </div>
+      @* <div class="form-group">
+        <label asp-for="Rental.Property.City" class="control-label"></label>
+        <input asp-for="Rental.Property.City" class="form-control" />
+        <span asp-validation-for="Rental.Property.City" class="text-danger"></span>
+        </div> *@
+      @* Testing *@
+
+      <input type="file" multiple id="avatar" name="avatar" accept="image/png, image/jpeg">
+
+
+      <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+      </div>
+    </form>
+  </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+  <a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {

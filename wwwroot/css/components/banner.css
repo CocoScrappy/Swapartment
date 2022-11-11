@@ -24,6 +24,12 @@
   height: calc(100vh - 140px);
 }
 
+.login-banner>* {
+  width: 50vw;
+  flex: 1 1 auto;
+}
+
 .login-banner img {
   border-radius: 12px;
+  object-fit: cover;
 }
