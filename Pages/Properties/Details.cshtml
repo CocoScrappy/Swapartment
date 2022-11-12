@@ -20,7 +20,7 @@
     <div class="photo-layout">
       <div class="row gx-2">
 
-        <div class="col-6">
+        <div class="col-lg-6">
           <img src="/images/home_splash4.jpg" alt="">
         </div>
 
@@ -43,10 +43,10 @@
     </div>
     @* End container *@
 
-    <div class="row pt-5">
+    <div class="row pt-5 gx-5">
       <div class="col-8">
         <div class="border-bottom">
-          <h2>Hosted by Owner Name</h2>
+          <h2>Hosted by @Html.DisplayFor(model => model.Property.SwapartmentUser)</h2>
           <p>
             @Html.DisplayFor(model => model.Property.NumberOfBedrooms) bedrooms・
             @Html.DisplayFor(model => model.Property.NumberOfBathrooms) baths
@@ -55,18 +55,7 @@
         </div>
 
 
-        <p class="border-bottom py-4">@Html.DisplayFor(model => model.Property.Description)
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae in maxime ad totam cupiditate officiis
-          magnam nam qui saepe dolores dicta deleniti eos nobis, quia porro voluptates ea amet fugit!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam veritatis quaerat repellat ipsum esse totam,
-          officiis tempore nemo animi dolore eos. Ipsam harum quos labore reiciendis quod nesciunt voluptates aut?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit molestiae dolorem, quibusdam quis commodi modi
-          architecto voluptatibus asperiores. Consectetur tenetur praesentium ducimus architecto voluptas rerum eos
-          quam. Eligendi, obcaecati velit!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi reiciendis explicabo vitae distinctio mollitia!
-          Quas consequuntur repudiandae cumque ex officia mollitia eos in nesciunt nulla! Corporis perferendis veritatis
-          nam temporibus.
-        </p>
+        <p class="border-bottom py-4">@Html.DisplayFor(model => model.Property.Description)</p>
         <p class="border-bottom py-4">Property tags</p>
         <p class="border-bottom py-4">Reviews</p>
         <div class="border-bottom py-4">
@@ -82,9 +71,9 @@
         <p class="py-4">Host info</p>
       </div>
 
-      <div class="col-4">
-        <form class="shadow p-5 sticky-top">
-          <h2>@Html.DisplayFor(model => model.Property.DailyRate) night</h2>
+      <div class="col-lg-4">
+        <form class="shadow p-5 sticky-top mb-5">
+          <h2>@Html.DisplayFor(model => model.Property.DailyRate) <span class="small">night</span></h2>
 
           <div class="form-floating mb-3">
             <div class="row g-2">
@@ -104,16 +93,23 @@
               </div>
             </div>
           </div>
-          <div class="form-floating mb-3">
+          @* <div class="form-floating mb-3">
             <input type="number" class="form-control" id="floatingInput" placeholder="1" min="1" max="50">
             <label for="floatingInput">Guests</label>
-          </div>
+            </div> *@
           <div class="d-grid">
-            @* Temporary - For testing purposes *@
-            <button type="submit" class="btn btn-primary btn-lg" asp-page="/SearchResults">
+            <button type="submit" class="btn btn-primary btn-lg mb-3" asp-page="../Rentals/Create/"
+              asp-route-id="@Model.Property?.Id">
               Reserve
             </button>
-            <p>You won't be charged yet</p>
+            <p class="text-center small">You won't be charged yet</p>
+
+            <p class="border-bottom pb-3">Do some math; Calculate total</p>
+            <div class="d-flex justify-content-between">
+              <p class="fw-bold">Total</p>
+              <p class="fw-bold">$00.00</p>
+
+            </div>
           </div>
         </form>
         @* <p>@Html.DisplayNameFor(model => model.Property.DailyRate)</p>

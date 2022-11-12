@@ -55,3 +55,15 @@ body {
   font-family: 'Quicksand', sans-serif;
   overflow-wrap: break-word;
 }
+
+a {
+  text-decoration: none;
+  text-decoration-color: unset;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  text-decoration-color: unset;
+  color: inherit;
+}
