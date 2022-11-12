@@ -46,7 +46,7 @@
     <div class="row pt-5 gx-5">
       <div class="col-8">
         <div class="border-bottom">
-          <h2>Hosted by @Html.DisplayFor(model => model.Property.SwapartmentUser)</h2>
+          <h2>Hosted by @Html.DisplayFor(model => model.Property.SwapartmentUser.UserName)</h2>
           <p>
             @Html.DisplayFor(model => model.Property.NumberOfBedrooms) bedrooms・
             @Html.DisplayFor(model => model.Property.NumberOfBathrooms) baths
@@ -72,7 +72,7 @@
       </div>
 
       <div class="col-lg-4">
-        <form class="shadow p-5 sticky-top mb-5">
+        <form class="border shadow p-5 sticky-top mb-5">
           <h2>@Html.DisplayFor(model => model.Property.DailyRate) <span class="small">night</span></h2>
 
           <div class="form-floating mb-3">

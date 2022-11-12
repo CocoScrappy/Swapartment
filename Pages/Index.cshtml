@@ -7,7 +7,7 @@
 <header class="banner position-relative img-bottom mb-3">
   <img src="/images/home_splash3.jpg" alt="">
 
-  <form class="position-absolute shadow p-5">
+  <form class="border position-absolute shadow p-5">
     <h2>Refresh your surroundings</h2>
     <p>Live wherever you want, whenever you want. Book a home on Swapartment.</p>
     <div class="form-floating mb-3">
@@ -51,7 +51,7 @@
   @foreach (var item in Model.Property)
   {
     @* Card start *@
-    <a asp-area="" asp-page="./Properties/Details" asp-route-id="1">
+    <a asp-area="" asp-page="./Properties/Details" asp-route-id="@item.Id">
       <div class="card mb-3">
         <div id="carousel0" class="carousel slide">
           <div class="carousel-inner">
