@@ -1,19 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using Swapartment.Models;
 
 namespace Swapartment.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
+  private readonly Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext _context;
 
-    public IndexModel(ILogger<IndexModel> logger)
+  public IndexModel(Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext context)
+  {
+    _context = context;
+  }
+
+  public IList<Property> Property { get; set; } = default!;
+
+  public async Task OnGetAsync()
+  {
+    if (_context.Properties != null)
     {
-        _logger = logger;
+      Property = await _context.Properties.ToListAsync();
     }
-
-    public void OnGet()
-    {
-
-    }
+  }
 }

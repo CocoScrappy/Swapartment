@@ -19,6 +19,7 @@ namespace Swapartment.Pages_Rentals
       _context = context;
     }
 
+    [BindProperty]
     public Rental Rental { get; set; } = default!;
 
     public async Task<IActionResult> OnGetAsync(int? id)
@@ -38,6 +39,47 @@ namespace Swapartment.Pages_Rentals
         Rental = rental;
       }
       return Page();
+    }
+
+    public async Task<IActionResult> OnPostAsync(int id)
+    {
+      if (!ModelState.IsValid)
+      {
+        return Page();
+      }
+      if (id == null || _context.Rentals == null)
+      {
+        return NotFound();
+      }
+
+
+      //Update info in initial Rental Object
+      var oldRental = _context.Rentals?.Where(e => e.Id == id).FirstOrDefault();
+      oldRental.Feedback = Rental.Feedback;
+      _context.Attach(oldRental).State = EntityState.Modified;
+
+      try
+      {
+        await _context.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!RentalExists(Rental.Id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
+      }
+
+      return RedirectToPage("./Index");
+    }
+
+    private bool RentalExists(int id)
+    {
+      return (_context.Rentals?.Any(e => e.Id == id)).GetValueOrDefault();
     }
   }
 }
