@@ -18,9 +18,11 @@ font-family: 'Quicksand',sans-serif;
 @import url("components/listing-cards.css");
 @import url("components/footer.css");
 @import url("components/bg-image.css");
+@import url("components/sticky-form.css");
 
 /* IMPORT LAYOUTS */
 @import url("layouts/card-grid.css");
+@import url("layouts/photo-layout.css");
 
 /* IMPORT UTILITIES */
 @import url("utilities.css");
@@ -51,4 +53,5 @@ html {
 body {
   margin-bottom: 60px;
   font-family: 'Quicksand', sans-serif;
+  overflow-wrap: break-word;
 }

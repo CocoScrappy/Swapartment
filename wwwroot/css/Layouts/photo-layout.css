@@ -1,0 +1,22 @@
+.photo-layout {
+  max-height: 500px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.photo-layout img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.photo-layout .row,
+.photo-layout .row>* {
+  max-height: inherit;
+}
+
+.photo-layout .row>*>* {
+  height: 100%;
+  /* gap: 10px; */
+}
