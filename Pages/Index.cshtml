@@ -51,7 +51,7 @@
   @foreach (var item in Model.Property)
   {
     @* Card start *@
-    <a asp-area="" asp-page="./Properties/Details" asp-route-id="1">
+    <a asp-area="" asp-page="./Properties/Details" asp-route-id="@item.Id">
       <div class="card mb-3">
         <div id="carousel0" class="carousel slide">
           <div class="carousel-inner">
