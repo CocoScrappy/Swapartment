@@ -2,85 +2,189 @@
 @model Swapartment.Pages_Properties.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+  ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Property</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.DailyRate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.DailyRate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.NumberOfBedrooms)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.NumberOfBedrooms)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.NumberOfBathrooms)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.NumberOfBathrooms)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.UnitNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.UnitNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.StreetAddress)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.StreetAddress)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.State)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.State)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.City)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.City)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.PostalCode)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Property.PostalCode)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Property.Country)
-        </dt>
-        <dd class="col-sm-10">
+
+<div class="border-top">
+  <div class="container pt-5">
+    <h1>@Html.DisplayFor(model => model.Property.Title)</h1>
+    <p>
+      @Html.DisplayFor(model => model.Property.City),
+      @Html.DisplayFor(model => model.Property.State),
+      @Html.DisplayFor(model => model.Property.Country)
+    </p>
+
+    @* Photo Layout *@
+    <div class="photo-layout">
+      <div class="row gx-2">
+
+        <div class="col-lg-6">
+          <img src="/images/home_splash4.jpg" alt="">
+        </div>
+
+        <div class="col-3">
+          <div class="d-flex flex-column">
+            <img class="mb-2" src="/images/home_splash.jpg" alt="">
+            <img src="/images/home_splash2.jpg" alt="">
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="d-flex flex-column">
+            <img class="mb-2" src="/images/home_splash3.jpg" alt="">
+            <img src="/images/home_splash5.jpg" alt="">
+          </div>
+        </div>
+
+      </div>
+      @* End row *@
+    </div>
+    @* End container *@
+
+    <div class="row pt-5 gx-5">
+      <div class="col-8">
+        <div class="border-bottom">
+          <h2>Hosted by @Html.DisplayFor(model => model.Property.SwapartmentUser)</h2>
+          <p>
+            @Html.DisplayFor(model => model.Property.NumberOfBedrooms) bedrooms・
+            @Html.DisplayFor(model => model.Property.NumberOfBathrooms) baths
+          </p>
+
+        </div>
+
+
+        <p class="border-bottom py-4">@Html.DisplayFor(model => model.Property.Description)</p>
+        <p class="border-bottom py-4">Property tags</p>
+        <p class="border-bottom py-4">Reviews</p>
+        <div class="border-bottom py-4">
+          <p>Map</p>
+          <p>
+            @Html.DisplayFor(model => model.Property.City),
+            @Html.DisplayFor(model => model.Property.State),
             @Html.DisplayFor(model => model.Property.Country)
-        </dd>
-    </dl>
+          </p>
+
+        </div>
+
+        <p class="py-4">Host info</p>
+      </div>
+
+      <div class="col-lg-4">
+        <form class="shadow p-5 sticky-top mb-5">
+          <h2>@Html.DisplayFor(model => model.Property.DailyRate) <span class="small">night</span></h2>
+
+          <div class="form-floating mb-3">
+            <div class="row g-2">
+              <div class="col-md">
+                <div class="form-floating">
+                  <input type="date" class="form-control" id="floatingInputGrid" value="2022-11-06" min="2022-11-06"
+                    max="2023-11-06">
+                  <label for="floatingInputGrid">Check in</label>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-floating">
+                  <input type="date" class="form-control" id="floatingInputGrid" value="2022-11-07" min="2022-11-07"
+                    max="2023-11-07">
+                  <label for="floatingInputGrid">Check out</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          @* <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="1" min="1" max="50">
+            <label for="floatingInput">Guests</label>
+            </div> *@
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg mb-3" asp-page="../Rentals/Create/"
+              asp-route-id="@Model.Property?.Id">
+              Reserve
+            </button>
+            <p class="text-center small">You won't be charged yet</p>
+
+            <p class="border-bottom pb-3">Do some math; Calculate total</p>
+            <div class="d-flex justify-content-between">
+              <p class="fw-bold">Total</p>
+              <p class="fw-bold">$00.00</p>
+
+            </div>
+          </div>
+        </form>
+        @* <p>@Html.DisplayNameFor(model => model.Property.DailyRate)</p>
+
+
+          <p>@Html.DisplayFor(model => model.Property.DailyRate)</p>
+
+
+          <div>
+          <a asp-page="./Edit" asp-route-id="@Model.Property?.Id">Edit</a> |
+          <a asp-page="../Rentals/Create/" asp-route-id="@Model.Property?.Id">Rent me!</a> |
+          <a asp-page="./Index">Back to List</a>
+          </div> *@
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Property?.Id">Edit</a> |
-    <a asp-page="../Rentals/Create/" asp-route-id="@Model.Property?.Id">Rent me!</a> |
-    <a asp-page="./Index">Back to List</a>
+
+
+
+
+
+
+
+
+
+
+
+
+@* <dt class="col-sm-2">
+  @Html.DisplayNameFor(model => model.Property.UnitNumber)
+  </dt>
+  <dd class="col-sm-10">
+  @Html.DisplayFor(model => model.Property.UnitNumber)
+  </dd>
+  <dt class="col-sm-2">
+  @Html.DisplayNameFor(model => model.Property.StreetAddress)
+  </dt>
+  <dd class="col-sm-10">
+  @Html.DisplayFor(model => model.Property.StreetAddress)
+  </dd>
+  <dt class="col-sm-2">
+  @Html.DisplayNameFor(model => model.Property.State)
+  </dt>
+  <dd class="col-sm-10">
+  @Html.DisplayFor(model => model.Property.State)
+  </dd>
+  <dt class="col-sm-2">
+  @Html.DisplayNameFor(model => model.Property.City)
+  </dt>
+  <dd class="col-sm-10">
+  @Html.DisplayFor(model => model.Property.City)
+  </dd>
+  <dt class="col-sm-2">
+  @Html.DisplayNameFor(model => model.Property.PostalCode)
+  </dt>
+  <dd class="col-sm-10">
+  @Html.DisplayFor(model => model.Property.PostalCode)
+  </dd>
+  <dt class="col-sm-2">
+  @Html.DisplayNameFor(model => model.Property.Country)
+  </dt>
+  <dd class="col-sm-10">
+  @Html.DisplayFor(model => model.Property.Country)
+  </dd> *@
+
+
+
+</div>
+
+
 </div>
