@@ -34,6 +34,14 @@ namespace Swapartment.Pages_Rentals
       {
         return NotFound();
       }
+      var property = await _context.Properties.FirstOrDefaultAsync(m => m.Id == id);
+      if (property == null)
+      {
+        return NotFound();
+      }
+      //Get property ID and Current User Id Into Rental.
+      Rental = new Rental();
+      Rental.Property = property;
 
 
       return Page();

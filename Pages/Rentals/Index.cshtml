@@ -53,10 +53,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Feedback)
                 </td>
-                <td>
+                @* <td>
                     <a asp-page="../Properties/Details" asp-route-id="@item.Property.Id">@Html.DisplayFor(modelItem =>
                     item.Property.Title)</a>
-                </td>
+                    </td> *@
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
