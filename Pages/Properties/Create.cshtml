@@ -71,8 +71,16 @@
       <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" />
       </div>
+      <div>
+        <input type="file" id=" ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" multiple/>
+      </div>
 
-      <input type="file" multiple id="avatar" name="avatar" accept="image/png, image/jpeg">
+
+<button id="butImg">Upload</button>
+<p>
+  <div id="ImgPreview" >
+  </div>
+</p>
 
     </form>
   </div>
@@ -84,4 +92,35 @@
 
 @section Scripts {
 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function ImgPre(input) {
+          for (each of input.files) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              var img = document.createElement("img");
+              img.src = e.target.result;
+              img.style.width = "100px";
+              img.style.height = "100px";
+              document.getElementById("ImgPreview").appendChild(img);
+              //add delete button to each image
+              var btn = document.createElement("button");
+              btn.innerHTML = "X";
+              btn.className = "btn btn-danger delete-btn"; // Alina you could prob use .delete-btn to style that delete button?
+              btn.onclick = function () {
+                img.remove();
+                btn.remove();
+                // remove image from input.files
+                input = Array.from(input.files).filter((file) => file.name != each.name);
+                $("#ImgUpload").trigger("change");
+                console.log(input);
+              };
+              document.getElementById("ImgPreview").appendChild(btn);
+              
+            
+            };
+            reader.readAsDataURL(each);
+          }
+
+        }
+    </script>
 }
