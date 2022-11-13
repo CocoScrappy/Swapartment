@@ -8,6 +8,23 @@ Template
 3. Need assistance / figure things out
 - 
 
+13th Nov
+=========
+
+2022/11/13 Louis
+1. Done / not done since last scrum:
+- Dynamic properties in list (missing images and links?)
+- Total price calculate by dates chosen in create Rentals
+- created admin users
+2. To do until next Scrum:
+- Look into why users didn't have roles
+- Do User Profile 
+    - Rental History link (for user rentals)
+    - Create properties list for user (link to next point)
+    - Create list of Rentals for each properties
+3. Need assistance / figure things out
+- Probably.
+
 
 12th Nov
 =========
@@ -24,6 +41,16 @@ Template
 3. Need assistance / figure things out
 N/A
 
+2022/11/12 Alina
+1. Done / not done since last scrum:
+- Styled Property Details pages
+- Worked with team on JS dynamic price display for create Rentals page
+2. To do until next Scrum:
+- Make all property cards clickable
+- Edit/create properties page
+3. Need assistance / figure things out
+- 
+
 
 10th Nov
 =========
@@ -36,6 +63,14 @@ N/A
 - Add Authorize tags to user restricted actions
 3. Need assistance / figure things out
 - Maybe Stripe, idk!
+
+2022/11/10 Alina
+1. Done / not done since last scrum:
+- Styled Login/Logout
+2. To do until next Scrum:
+- Individual Property Details pages
+3. Need assistance / figure things out
+- 
 
 9th Nov
 ========
