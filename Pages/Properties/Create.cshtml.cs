@@ -80,17 +80,21 @@ namespace Swapartment.Pages_Properties
 
         // create uuid for filename
         string uuid = Guid.NewGuid().ToString();
+        await _containerClient.UploadBlobAsync(uuid, Upload.OpenReadStream());
         PropertyImage.ImageUrl = uuid;
         Property.Images.Add(PropertyImage);
         // Upload the file to the container
-        await _containerClient.UploadBlobAsync(uuid, Upload.OpenReadStream());
+
       }
       catch (Exception e)
       {
         Console.WriteLine(e.Message);
       }
+<<<<<<< HEAD
+=======
 
-      _context.PropertyImages.Add(PropertyImage);
+>>>>>>> main
+
       _context.Properties.Add(Property);
       await _context.SaveChangesAsync();
 

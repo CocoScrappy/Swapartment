@@ -98,6 +98,9 @@
             <label for="floatingInput">Guests</label>
             </div> *@
           <div class="d-grid">
+            @* Changes the placement of rental create detail
+              and index to account folder on top of project hierarchy
+              asp-page="../../Areas/Identity/Account/Pages/Rentals/Create/"*@
             <button type="submit" class="btn btn-primary btn-lg mb-3" asp-page="../Rentals/Create/"
               asp-route-id="@Model.Property?.Id">
               Reserve
