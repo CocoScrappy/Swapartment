@@ -23,12 +23,17 @@ namespace Swapartment.Pages_Properties
     [BindProperty]
     public Property Property { get; set; } = default!;
 
+
+    [BindProperty]
+    public IList<PropertyTag> Tags { get; set; }
+
     public async Task<IActionResult> OnGetAsync(int? id)
     {
       if (id == null || _context.Properties == null)
       {
         return NotFound();
       }
+      Tags = await _context.PropertyTags.ToListAsync();
 
       var property = await _context.Properties.FirstOrDefaultAsync(m => m.Id == id);
       if (property == null)
@@ -64,6 +69,11 @@ namespace Swapartment.Pages_Properties
         {
           throw;
         }
+      }
+
+      foreach (var item in Tags)
+      {
+        Console.WriteLine(item.Name);
       }
 
       return RedirectToPage("./Index");
