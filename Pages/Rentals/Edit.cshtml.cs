@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using Swapartment.Models;
 
 namespace Swapartment.Pages_Rentals
 {
+  [Authorize]
   public class EditModel : PageModel
   {
     private readonly Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext _context;

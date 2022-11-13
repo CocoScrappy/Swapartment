@@ -37,17 +37,17 @@ namespace Swapartment.Pages_Properties
       _context = context;
       _userManager = userManager;
 
-        if (env.IsDevelopment())
-        {
-          _containerClient = new BlobContainerClient(config.Value.BlobAccountName, config.Value.BlobContainerName);
-        }
-        else
-        {
-          string containerEndpoint = string.Format("https://{0}.blob.core.windows.net/{1}",
-            config.Value.BlobAccountName,
-            config.Value.BlobContainerName);
-          _containerClient = new BlobContainerClient(new Uri(containerEndpoint), new DefaultAzureCredential());
-        }
+      if (env.IsDevelopment())
+      {
+        _containerClient = new BlobContainerClient(config.Value.BlobAccountName, config.Value.BlobContainerName);
+      }
+      else
+      {
+        string containerEndpoint = string.Format("https://{0}.blob.core.windows.net/{1}",
+          config.Value.BlobAccountName,
+          config.Value.BlobContainerName);
+        _containerClient = new BlobContainerClient(new Uri(containerEndpoint), new DefaultAzureCredential());
+      }
 
     }
 
@@ -72,25 +72,26 @@ namespace Swapartment.Pages_Properties
         // Create the container if it does not exist.
         await _containerClient.CreateIfNotExistsAsync();
 
-        for (int i=0; i<Uploads.Count; i++)
-        { 
+        for (int i = 0; i < Uploads.Count; i++)
+        {
 
         }
 
 
         // create uuid for filename
         string uuid = Guid.NewGuid().ToString();
+        await _containerClient.UploadBlobAsync(uuid, Upload.OpenReadStream());
         PropertyImage.ImageUrl = uuid;
         Property.Images.Add(PropertyImage);
         // Upload the file to the container
-        await _containerClient.UploadBlobAsync(uuid, Upload.OpenReadStream());
+
       }
       catch (Exception e)
       {
         Console.WriteLine(e.Message);
-      }      
+      }
 
-      _context.PropertyImages.Add(PropertyImage);
+
       _context.Properties.Add(Property);
       await _context.SaveChangesAsync();
 

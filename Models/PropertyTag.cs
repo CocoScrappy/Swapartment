@@ -18,5 +18,7 @@ namespace Swapartment.Models
 
     [Required]
     public string? IconUrl { get; set; } = default!;
+
+    public virtual ICollection<Property>? Property { get; set; } = default!;
   }
 }

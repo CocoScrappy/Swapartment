@@ -1,0 +1,66 @@
+@page "{id:int}"
+@model Swapartment.Areas.Identity.Pages_Rentals.PropertyRentalsModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@* <h1>Property @Model.Rental.Property?.Id</h1> *@
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].PriceTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].isPaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].Feedback)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rental[0].Property.Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Rental)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriceTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isPaid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Feedback)
+                </td>
+                if(item.Property != null)
+                {
+                <td>
+                    <a asp-page="../Properties/Details" asp-route-id="@item.Property.Id">@Html.DisplayFor(modelItem =>
+                    item.Property.Title)</a>
+                </td>
+                }
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

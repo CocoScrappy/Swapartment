@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Swapartment.Areas.Identity.Data;
 using Swapartment.Models;
 
-namespace Swapartment.Pages_Properties
+namespace Swapartment.Areas.Identity.Pages_Properties
 {
   [Authorize]
-  public class DeleteModel : PageModel
+  public class EditModel : PageModel
   {
-
     private readonly Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext _context;
 
-    public DeleteModel(Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext context)
+    public EditModel(Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext context)
     {
       _context = context;
     }
@@ -33,34 +33,47 @@ namespace Swapartment.Pages_Properties
       }
 
       var property = await _context.Properties.FirstOrDefaultAsync(m => m.Id == id);
-
       if (property == null)
       {
         return NotFound();
       }
-      else
-      {
-        Property = property;
-      }
+      Property = property;
       return Page();
     }
 
-    public async Task<IActionResult> OnPostAsync(int? id)
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more details, see https://aka.ms/RazorPagesCRUD.
+    public async Task<IActionResult> OnPostAsync()
     {
-      if (id == null || _context.Properties == null)
+      if (!ModelState.IsValid)
       {
-        return NotFound();
+        return Page();
       }
-      var property = await _context.Properties.FindAsync(id);
 
-      if (property != null)
+      _context.Attach(Property).State = EntityState.Modified;
+
+      try
       {
-        Property = property;
-        _context.Properties.Remove(Property);
         await _context.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException)
+      {
+        if (!PropertyExists(Property.Id))
+        {
+          return NotFound();
+        }
+        else
+        {
+          throw;
+        }
       }
 
       return RedirectToPage("./Index");
+    }
+
+    private bool PropertyExists(int id)
+    {
+      return (_context.Properties?.Any(e => e.Id == id)).GetValueOrDefault();
     }
   }
 }

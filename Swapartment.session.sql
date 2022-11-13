@@ -1,2 +1,2 @@
-Select *
-FROM Properties;
+SELECT *
+FROM PropertyTags;
