@@ -14,6 +14,7 @@ using Azure.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Swapartment.Areas.Identity.Data;
 
+
 namespace Swapartment.Pages;
 
 
@@ -45,7 +46,6 @@ public class UploadModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-
         if (!ModelState.IsValid)
         {
             return Page();
@@ -56,8 +56,10 @@ public class UploadModel : PageModel
             // Create the container if it does not exist.
             await _containerClient.CreateIfNotExistsAsync();
 
+            // create uuid for filename
+            string uuid = Guid.NewGuid().ToString();
             // Upload the file to the container
-            await _containerClient.UploadBlobAsync(Upload.FileName, Upload.OpenReadStream());
+            await _containerClient.UploadBlobAsync(uuid, Upload.OpenReadStream());
         }
         catch (Exception e)
         {

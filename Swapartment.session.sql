@@ -1,2 +1,2 @@
-SELECT *
-FROM AspNetUserRoles;
+Select *
+FROM Properties;

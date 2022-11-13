@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
   <div class="col-md-4">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
       <div class="form-group">
         <label asp-for="Property.Title" class="control-label"></label>
@@ -71,8 +71,11 @@
       <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" />
       </div>
-
-      <input type="file" multiple id="avatar" name="avatar" accept="image/png, image/jpeg">
+      <div>
+        <input type="file" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" style="display: none;" multiple />
+        <input type="button" value="Browse..." onclick="document.getElementById('ImgUpload').click();" />
+        <div id="ImgPreview" />
+      </div>
 
     </form>
   </div>
@@ -84,4 +87,34 @@
 
 @section Scripts {
 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        function ImgPre(input) {
+          for (each of input.files) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              var img = document.createElement("img");
+              img.src = e.target.result;
+              img.style.width = "100px";
+              img.style.height = "100px";
+              document.getElementById("ImgPreview").appendChild(img);
+              //add delete button to each image
+              var btn = document.createElement("button");
+              btn.innerHTML = "X";
+              btn.className = "btn btn-danger delete-btn"; // Alina you could prob use .delete-btn to style that delete button?
+              btn.onclick = function () {
+                img.remove();
+                btn.remove();
+                // remove image from input.files
+                input = Array.from(input.files).filter((file) => file.name != each.name);
+
+              };
+              document.getElementById("ImgPreview").appendChild(btn);
+              
+            
+            };
+            reader.readAsDataURL(each);
+          }
+
+        }
+    </script>
 }

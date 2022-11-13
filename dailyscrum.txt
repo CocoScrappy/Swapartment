@@ -8,10 +8,25 @@ Template
 3. Need assistance / figure things out
 - 
 
+
+12th Nov
+=========
+2022/11/12 DMITRY
+1. Done / not done since last scrum:
+- finish blob upload - Done
+- blob download and display - Not Done
+- deploy app in App Service - Done
+- safe db and blob key storage - Done
+2. To do until next Scrum:
+- UUIDs for file names
+- multiple image upload support
+- thumbnail preview of images before upload
+3. Need assistance / figure things out
+N/A
+
+
 10th Nov
 =========
-
-
 2022/11/10 Louis
 1. Done / not done since last scrum:
 - talked to Matthew abour Stripe
