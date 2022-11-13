@@ -16,9 +16,10 @@ public class SwapartmentIdentityDbContext : IdentityDbContext<SwapartmentUser>
   protected override void OnModelCreating(ModelBuilder builder)
   {
 
-    #region RoleSeed
-    builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "USER", NormalizedName = "USER" }, new IdentityRole { Name = "ADMIN", NormalizedName = "ADMIN" });
-    #endregion
+
+    // #region RoleSeed
+    // builder.Entity<IdentityRole>().HasData(new IdentityRole { Name = "USER", NormalizedName = "USER" }, new IdentityRole { Name = "ADMIN", NormalizedName = "ADMIN" });
+    // #endregion
 
     base.OnModelCreating(builder);
     // Customize the ASP.NET Identity model and override the defaults if needed.
