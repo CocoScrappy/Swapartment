@@ -28,7 +28,8 @@ namespace Swapartment.Pages_Properties
         return NotFound();
       }
 
-      var property = await _context.Properties.FirstOrDefaultAsync(m => m.Id == id);
+      // var property = await _context.Properties.FirstOrDefaultAsync(m => m.Id == id);
+      var property = await _context.Properties.Include(p => p.SwapartmentUser).FirstOrDefaultAsync(m => m.Id == id);
       if (property == null)
       {
         return NotFound();

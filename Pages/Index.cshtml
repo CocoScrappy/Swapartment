@@ -7,7 +7,7 @@
 <header class="banner position-relative img-bottom mb-3">
   <img src="/images/home_splash3.jpg" alt="">
 
-  <form class="position-absolute shadow p-5">
+  <form class="border position-absolute shadow p-5">
     <h2>Refresh your surroundings</h2>
     <p>Live wherever you want, whenever you want. Book a home on Swapartment.</p>
     <div class="form-floating mb-3">
@@ -48,47 +48,52 @@
 
 <h2>Example Listings</h2>
 <div class="card-grid">
-
-  @* Card start *@
-  <a asp-area="" asp-page="./Properties/Details" asp-route-id="1">
-    <div class="card mb-3">
-      <div id="carousel0" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="/images/home_splash.jpg" class="d-block w-100 card-img-top" alt="...">
+  @foreach (var item in Model.Property)
+  {
+    @* Card start *@
+    <a asp-area="" asp-page="./Properties/Details" asp-route-id="@item.Id">
+      <div class="card mb-3">
+        <div id="carousel0" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/images/home_splash.jpg" class="d-block w-100 card-img-top" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/home_splash2.jpg" class="d-block w-100 card-img-top" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="/images/home_splash3.jpg" class="d-block w-100 card-img-top" alt="...">
+            </div>
           </div>
-          <div class="carousel-item">
-            <img src="/images/home_splash2.jpg" class="d-block w-100 card-img-top" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="/images/home_splash3.jpg" class="d-block w-100 card-img-top" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel0" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel0" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-
-      <div class="card-body">
-        <div class="d-flex justify-content-between">
-          <p class="card-title">City, State, Country</p>
-          <p class="card-text"><i class="bi bi-star-fill"></i> 4.8</p>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel0" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel0" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
 
-        <p class="card-text text-muted">Property Title</p>
-        <p class="card-text text-muted">Number of bedrooms</p>
-        <p class="card-text">$ Price <small class="text-muted">night</small></p>
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <p class="card-title">@Html.DisplayFor(modelItem => item.City), @Html.DisplayFor(modelItem => item.State),
+              @Html.DisplayFor(modelItem => item.Country)</p>
+            <p class="card-text"><i class="bi bi-star-fill"></i> 4.8</p>
+          </div>
+
+          <p class="card-text text-muted">@Html.DisplayFor(modelItem => item.Title)</p>
+          <p class="card-text text-muted">@Html.DisplayFor(modelItem => item.NumberOfBedrooms) Bedrooms</p>
+          <p class="card-text">@Html.DisplayFor(modelItem => item.DailyRate) <small class="text-muted">per night</small>
+          </p>
+        </div>
+
+
+
       </div>
-
-    </div>
-  </a>
-  @* Card end *@
-
+    </a>
+    @* Card end *@
+  }
 
 
 </div>
