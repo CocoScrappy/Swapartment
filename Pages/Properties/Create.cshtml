@@ -72,7 +72,7 @@
         <input type="submit" value="Create" class="btn btn-primary" />
       </div>
       <div>
-        <input type="file" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" style="display: none;" multiple />
+        <input type="file"asp-for="Uploads" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" style="display: none;" multiple />
         <input type="button" value="Browse..." onclick="document.getElementById('ImgUpload').click();" />
         <div id="ImgPreview" />
       </div>
@@ -89,10 +89,12 @@
 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script>
         function ImgPre(input) {
+          int index=0;
           for (each of input.files) {
             var reader = new FileReader();
             reader.onload = function (e) {
               var img = document.createElement("img");
+              img.Id = index;
               img.src = e.target.result;
               img.style.width = "100px";
               img.style.height = "100px";
@@ -102,19 +104,21 @@
               btn.innerHTML = "X";
               btn.className = "btn btn-danger delete-btn"; // Alina you could prob use .delete-btn to style that delete button?
               btn.onclick = function () {
+                //remove image from input list given index
+                //; 
+                //let fileListArr = Array.from(input.files);
+                //fileListArr.splice(img.Id, 1);
                 img.remove();
                 btn.remove();
-                // remove image from input.files
-                input = Array.from(input.files).filter((file) => file.name != each.name);
 
               };
               document.getElementById("ImgPreview").appendChild(btn);
-              
+              console.log(input.files);
             
             };
             reader.readAsDataURL(each);
+            index++;
           }
-
         }
     </script>
 }
