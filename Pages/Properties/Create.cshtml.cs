@@ -29,6 +29,7 @@ namespace Swapartment.Pages_Properties
     private BlobContainerClient _containerClient;
     [BindProperty]
     public IFormFile Upload { get; set; }
+    [BindProperty]
     public IFormFileCollection Uploads { get; set; }
 
     public CreateModel(SwapartmentIdentityDbContext context, UserManager<SwapartmentUser> userManager, IOptions<AzureStorageConfig> config, IWebHostEnvironment env)
@@ -76,7 +77,7 @@ namespace Swapartment.Pages_Properties
 
         }
 
-        
+
         // create uuid for filename
         string uuid = Guid.NewGuid().ToString();
         PropertyImage.ImageUrl = uuid;

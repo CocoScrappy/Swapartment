@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
   <div class="col-md-4">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
       <div class="form-group">
         <label asp-for="Property.Title" class="control-label"></label>
@@ -73,14 +73,8 @@
       </div>
       <div>
         <input type="file" id=" ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" multiple/>
+        <div id="ImgPreview" />
       </div>
-
-
-<button id="butImg">Upload</button>
-<p>
-  <div id="ImgPreview" >
-  </div>
-</p>
 
     </form>
   </div>
