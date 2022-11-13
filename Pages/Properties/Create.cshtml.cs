@@ -90,10 +90,6 @@ namespace Swapartment.Pages_Properties
       {
         Console.WriteLine(e.Message);
       }
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 
       _context.Properties.Add(Property);
       await _context.SaveChangesAsync();

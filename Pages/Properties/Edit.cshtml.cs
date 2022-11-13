@@ -27,10 +27,6 @@ namespace Swapartment.Pages_Properties
     [BindProperty]
     public IList<PropertyTag> Tags { get; set; }
 
-
-    [BindProperty]
-    public IList<PropertyTag> Tags { get; set; }
-
     public async Task<IActionResult> OnGetAsync(int? id)
     {
       if (id == null || _context.Properties == null)

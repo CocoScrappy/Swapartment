@@ -19,7 +19,7 @@
       </div>
       <div class="form-group">
         <label asp-for="Property.Description" class="control-label"></label>
-        <input asp-for="Property.Description" class="form-control" />
+        <textarea asp-for="Property.Description" class="form-control">
         <span asp-validation-for="Property.Description" class="text-danger"></span>
       </div>
       <div class="form-group">
@@ -68,8 +68,8 @@
         <span asp-validation-for="Property.Country" class="text-danger"></span>
       </div>
 
-
       @* Tags *@
+
       @foreach (var item in Model.Tags)
 
       {
