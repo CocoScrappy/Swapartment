@@ -1,2 +1,2 @@
-Select *
-FROM Rentals;
+SELECT *
+FROM AspNetUserRoles;
