@@ -72,7 +72,8 @@
         <input type="submit" value="Create" class="btn btn-primary" />
       </div>
       <div>
-        <input type="file" id=" ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" multiple/>
+        <input type="file" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" style="display: none;" multiple />
+        <input type="button" value="Browse..." onclick="document.getElementById('ImgUpload').click();" />
         <div id="ImgPreview" />
       </div>
 
@@ -105,8 +106,7 @@
                 btn.remove();
                 // remove image from input.files
                 input = Array.from(input.files).filter((file) => file.name != each.name);
-                $("#ImgUpload").trigger("change");
-                console.log(input);
+
               };
               document.getElementById("ImgPreview").appendChild(btn);
               
