@@ -7,11 +7,11 @@
 <header class="banner position-relative img-bottom mb-3">
   <img src="/images/home_splash3.jpg" alt="">
 
-  <form class="border position-absolute shadow p-5">
+  <form class="border position-absolute shadow p-5 search">
     <h2>Refresh your surroundings</h2>
     <p>Live wherever you want, whenever you want. Book a home on Swapartment.</p>
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="floatingInput" placeholder="Canada">
+      <input type="text" class="form-control searchlocation" id="floatingInput" placeholder="Canada">
       <label for="floatingInput">Location</label>
     </div>
     <div class="form-floating mb-3">
@@ -97,3 +97,16 @@
 
 
 </div>
+
+<script>
+
+  const searchlocation = document.querySelector(".searchlocation");
+  const form = document.querySelector(".search");
+
+  function setSearchInStorage(event) {
+    localStorage.setItem('searchlocation', `${searchlocation.value}`);
+  }
+
+  form.addEventListener('submit', setSearchInStorage);
+
+</script>
