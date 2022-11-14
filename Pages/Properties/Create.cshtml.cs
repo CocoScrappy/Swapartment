@@ -26,14 +26,9 @@ namespace Swapartment.Pages_Properties
 
     [BindProperty]
     public Property Property { get; set; } = default!;
-    [BindProperty]
-    public PropertyImage PropertyImage { get; set; } = default!;
-    [BindProperty]
-    public ICollection<PropertyImage>? Images { get; set; } = default!;
 
     private BlobContainerClient _containerClient;
-    [BindProperty]
-    public IFormFile Upload { get; set; }
+
     [BindProperty]
     public IFormFileCollection Uploads { get; set; }
 
@@ -61,22 +56,20 @@ namespace Swapartment.Pages_Properties
       return Page();
     }
 
-    // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+
     public async Task<IActionResult> OnPostAsync()
     {
       var currentUser = await _userManager.GetUserAsync(User);
 
       Property.SwapartmentUser = currentUser;
-      // if (!ModelState.IsValid || _context.Properties == null || Property == null || Uploads.Count == 0)
-      // {
-      //   return Page();
-      // }
+      if (!ModelState.IsValid || _context.Properties == null || Property == null || Uploads.Count < 5)
+      {
+        return Page();
+      }
 
 
       try
       {
-
-
         // Create the container if it does not exist.
         await _containerClient.CreateIfNotExistsAsync();
         _context.Properties.Add(Property);
@@ -90,7 +83,7 @@ namespace Swapartment.Pages_Properties
         for (int i = 0; i < Uploads.Count; i++)
         {
           string uuid = Guid.NewGuid().ToString();
-          // set PropertyImage object ImageUrl to uuid
+
 
 
           propImgList.Add(new PropertyImage());
@@ -98,7 +91,6 @@ namespace Swapartment.Pages_Properties
 
           Property.Images = propImgList;
 
-          //Property.Images.Add(Uploads[i]);
           // Upload the file to the container
 
           var cont_type = Uploads[i].ContentType;
@@ -107,7 +99,6 @@ namespace Swapartment.Pages_Properties
           BlobClient blobClient = _containerClient.GetBlobClient(uuid);
           await blobClient.UploadAsync(stream, true);
           var res = blobClient.SetHttpHeaders(new BlobHttpHeaders() { ContentType = Uploads[i].ContentType });
-          //var res = await _containerClient.UploadBlobAsync(uuid, Uploads[i].OpenReadStream());
 
 
           if (!res.GetRawResponse().Status.ToString().StartsWith("2"))
