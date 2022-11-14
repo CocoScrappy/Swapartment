@@ -141,7 +141,11 @@
 
 
   function setSearchInStorage(event) {
-    localStorage.setItem('searchlocation', `${searchlocation.value}`);
+    if (searchlocation.value == '') {
+      localStorage.setItem('searchlocation', 'Montreal');
+    } else {
+      localStorage.setItem('searchlocation', `${searchlocation.value}`);
+    }
 
   }
 
