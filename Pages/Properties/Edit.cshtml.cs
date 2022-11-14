@@ -71,6 +71,11 @@ namespace Swapartment.Pages_Properties
         }
       }
 
+      foreach (var item in Tags)
+      {
+        Console.WriteLine(item.Name);
+      }
+
       return RedirectToPage("./Index");
     }
 

@@ -75,7 +75,7 @@ namespace Swapartment.Pages_Properties
 
       try
       {
-            
+
 
         // Create the container if it does not exist.
         await _containerClient.CreateIfNotExistsAsync();
@@ -84,15 +84,15 @@ namespace Swapartment.Pages_Properties
 
         // instantiate Property.Images
         var propImgList = new List<PropertyImage>();
-        
+
         string containerEndpoint = _containerClient.Uri.AbsoluteUri;
 
-        for (int i=0; i<Uploads.Count; i++)
-        { 
+        for (int i = 0; i < Uploads.Count; i++)
+        {
           string uuid = Guid.NewGuid().ToString();
           // set PropertyImage object ImageUrl to uuid
-          
-          
+
+
           propImgList.Add(new PropertyImage());
           propImgList.ElementAt(i).ImageUrl = containerEndpoint + "/" + uuid;
 
@@ -100,22 +100,22 @@ namespace Swapartment.Pages_Properties
 
           //Property.Images.Add(Uploads[i]);
           // Upload the file to the container
-          
+
           var cont_type = Uploads[i].ContentType;
-          
+
           Stream stream = Uploads[i].OpenReadStream();
           BlobClient blobClient = _containerClient.GetBlobClient(uuid);
           await blobClient.UploadAsync(stream, true);
           var res = blobClient.SetHttpHeaders(new BlobHttpHeaders() { ContentType = Uploads[i].ContentType });
           //var res = await _containerClient.UploadBlobAsync(uuid, Uploads[i].OpenReadStream());
-          
-          
+
+
           if (!res.GetRawResponse().Status.ToString().StartsWith("2"))
           {
             throw new Exception("Upload failed");
           }
 
-      
+
 
           _context.Attach(Property).State = EntityState.Modified;
           await _context.SaveChangesAsync();
