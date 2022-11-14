@@ -6,15 +6,19 @@
 <div class="d-flex align-items-stretch flex-column-reverse flex-md-row search-results">
   @* CARDS SECTION *@
   <div class="card-grid">
+    @{
+      var carouselcount = 0;
+    }
     @foreach (var item in Model.Property)
     {
+
       <a asp-area="" asp-page="./Properties/Details" asp-route-id="@item.Id">
         <div class="card mb-3">
-          <div id="carousel0" class="carousel slide">
+          @{
+            var count = 0;
+          }
+          <div id="carousel@(carouselcount)" class="carousel slide">
             <div class="carousel-inner">
-              @{
-                var count = 0;
-              }
               @foreach (var image in item.Images!)
               {
 
@@ -33,11 +37,13 @@
                 }
 
               }
-              <button class="carousel-control-prev" type="button" data-bs-target="#carousel0" data-bs-slide="prev">
+              <button class="carousel-control-prev" type="button" data-bs-target="#carousel@(carouselcount)"
+              data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carousel0" data-bs-slide="next">
+              <button class="carousel-control-next" type="button" data-bs-target="#carousel@(carouselcount)"
+              data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </button>
@@ -57,11 +63,15 @@
               </p>
             </div>
 
+            @{
+              carouselcount++;
+            }
 
           </div>
         </div>
       </a>
       @* Card end *@
+
     }
 
   </div>
