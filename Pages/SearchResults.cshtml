@@ -47,7 +47,7 @@
               <div class="d-flex justify-content-between">
                 <p class="card-title">@Html.DisplayFor(modelItem => item.City), @Html.DisplayFor(modelItem => item.State),
                   @Html.DisplayFor(modelItem => item.Country)</p>
-                <p class="card-text"><i class="bi bi-star-fill"></i> 4.8</p>
+                <p class="card-text listingcard"></p>
               </div>
 
               <p class="card-text text-muted">@Html.DisplayFor(modelItem => item.Title)</p>
@@ -76,7 +76,16 @@
 
 @section Scripts {
 <script>
+  // Set ratings
+  const cards = document.querySelectorAll(".listingcard")
 
+  cards.forEach(setRating);
+
+  function setRating(card) {
+    card.innerHTML = `<i class="bi bi-star-fill"></i> ${Math.floor(Math.random() * 5) + 1}`;
+  }
+
+  // Map
   const apiKey = 'pk.eyJ1IjoiYWxpbmFnZWUiLCJhIjoiY2tjaG14MTlhMGh4ejJxbzB1dmxtbXhndSJ9.1n05xXhvacdhS-dWPWaH6Q';
   mapboxgl.accessToken = apiKey;
 
@@ -95,11 +104,16 @@
     const map = new mapboxgl.Map({
       container: 'map',
       center: coord, // Coordinates of search location go here
-      zoom: 12,
+      zoom: 10,
       style: 'mapbox://styles/mapbox/streets-v11'
     });
 
+
     map.addControl(new mapboxgl.NavigationControl());
+
+    new mapboxgl.Marker()
+      .setLngLat(coord)
+      .addTo(map);
   }
 
 
