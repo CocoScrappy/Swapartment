@@ -15,10 +15,11 @@ public class SearchResultsModel : PageModel
   }
   public IList<Property> Property { get; set; } = default!;
 
-  public async Task OnGetAsync()
+  public async Task OnGetAsync(string? searchString)
   {
     if (_context.Properties != null)
     {
+
       Property = await _context.Properties.Include(p => p.Images).ToListAsync();
     }
   }
