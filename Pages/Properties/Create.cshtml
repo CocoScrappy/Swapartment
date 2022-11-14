@@ -5,79 +5,80 @@
   ViewData["Title"] = "Create a new listing";
 }
 
-<div class="border-top">
+<div class="border-top pb-5">
   <div class="container pt-5">
-    <h1>Create a new listing</h1>
+    <h1 class="mb-5">Create a new listing</h1>
 
     <form method="post" enctype="multipart/form-data">
       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-      <div class="form-group">
-        <label asp-for="Property.Title" class="control-label"></label>
-        <input asp-for="Property.Title" class="form-control" />
+      <div class="form-floating mb-3">
+        <input asp-for="Property.Title" class="form-control" id="floatingTitle" />
+        <label for="floatingTitle" asp-for="Property.Title"></label>
         <span asp-validation-for="Property.Title" class="text-danger"></span>
       </div>
-      <div class="form-group">
-        <label asp-for="Property.Description" class="control-label"></label>
-        <textarea asp-for="Property.Description" class="form-control"></textarea>
+      <div class="form-floating mb-3">
+        <textarea id="" asp-for="Property.Description" class="form-control"></textarea>
+        <label for="" asp-for="Property.Description" class="control-label"></label>
         <span asp-validation-for="Property.Description" class="text-danger"></span>
       </div>
-      <div class="form-group">
-        <label asp-for="Property.DailyRate" class="control-label"></label>
-        <input asp-for="Property.DailyRate" class="form-control" />
+      <div class="form-floating mb-3">
+        <input id="" asp-for="Property.DailyRate" class="form-control" type="number" />
+        <label for="" asp-for="Property.DailyRate" class="control-label"></label>
         <span asp-validation-for="Property.DailyRate" class="text-danger"></span>
       </div>
-      <div class="form-group">
-        <label asp-for="Property.NumberOfBedrooms" class="control-label"></label>
-        <input asp-for="Property.NumberOfBedrooms" class="form-control" />
+      <div class="form-floating mb-3">
+        <input type="number" id="" asp-for="Property.NumberOfBedrooms" class="form-control" />
+        <label for="" asp-for="Property.NumberOfBedrooms" class="control-label"></label>
         <span asp-validation-for="Property.NumberOfBedrooms" class="text-danger"></span>
       </div>
-      <div class="form-group">
-        <label asp-for="Property.NumberOfBathrooms" class="control-label"></label>
-        <input asp-for="Property.NumberOfBathrooms" class="form-control" />
+      <div class="form-floating mb-3">
+        <input type="number" id="" asp-for="Property.NumberOfBathrooms" class="form-control" />
+        <label for="" asp-for="Property.NumberOfBathrooms" class="control-label"></label>
         <span asp-validation-for="Property.NumberOfBathrooms" class="text-danger"></span>
       </div>
-      <div class="form-group">
-        <label asp-for="Property.UnitNumber" class="control-label"></label>
-        <input asp-for="Property.UnitNumber" class="form-control" />
+      <div class="form-floating mb-3">
+        <input id="" asp-for="Property.UnitNumber" class="form-control" />
+        <label for="" asp-for="Property.UnitNumber" class="control-label"></label>
         <span asp-validation-for="Property.UnitNumber" class="text-danger"></span>
       </div>
-      <div class="form-group">
-        <label asp-for="Property.StreetAddress" class="control-label"></label>
-        <input asp-for="Property.StreetAddress" class="form-control" />
+      <div class="form-floating mb-3">
+        <input id="" asp-for="Property.StreetAddress" class="form-control" />
+        <label for="" asp-for="Property.StreetAddress" class="control-label"></label>
         <span asp-validation-for="Property.StreetAddress" class="text-danger"></span>
       </div>
-      <div class="form-group">
-        <label asp-for="Property.State" class="control-label"></label>
-        <input asp-for="Property.State" class="form-control" />
+      <div class="form-floating mb-3">
+        <input id="" asp-for="Property.State" class="form-control" />
+        <label for="" asp-for="Property.State" class="control-label"></label>
         <span asp-validation-for="Property.State" class="text-danger"></span>
       </div>
-      <div class="form-group">
-        <label asp-for="Property.City" class="control-label"></label>
-        <input asp-for="Property.City" class="form-control" />
+      <div class="form-floating mb-3">
+        <input id="" asp-for="Property.City" class="form-control" />
+        <label for="" asp-for="Property.City" class="control-label"></label>
         <span asp-validation-for="Property.City" class="text-danger"></span>
       </div>
-      <div class="form-group">
-        <label asp-for="Property.PostalCode" class="control-label"></label>
-        <input asp-for="Property.PostalCode" class="form-control" />
+      <div class="form-floating mb-3">
+        <input id="" asp-for="Property.PostalCode" class="form-control" />
+        <label for="" asp-for="Property.PostalCode" class="control-label"></label>
         <span asp-validation-for="Property.PostalCode" class="text-danger"></span>
       </div>
-      <div class="form-group">
-        <label asp-for="Property.Country" class="control-label"></label>
-        <input asp-for="Property.Country" class="form-control" />
+      <div class="form-floating mb-3">
+        <input id="" asp-for="Property.Country" class="form-control" />
+        <label for="" asp-for="Property.Country" class="control-label"></label>
         <span asp-validation-for="Property.Country" class="text-danger"></span>
       </div>
 
 
 
 
-      <div>
+      <div class="mb-3">
         <input type="file" asp-for="Uploads" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg"
           style="display: none;" multiple />
         <input type="button" value="Browse..." onclick="document.getElementById('ImgUpload').click();" />
-        <div id="ImgPreview" />
+        <div class="mt-3" id="ImgPreview"></div>
       </div>
-      <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary" />
+
+      <div class="form-group mb-3">
+        <input type="submit" value="Create" class="btn btn-primary" asp-page="./Index" />
       </div>
 
     </form>
