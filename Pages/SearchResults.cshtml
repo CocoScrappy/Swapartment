@@ -74,15 +74,35 @@
 
 </div>
 
+@section Scripts {
 <script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoiYWxpbmFnZWUiLCJhIjoiY2tjaG14MTlhMGh4ejJxbzB1dmxtbXhndSJ9.1n05xXhvacdhS-dWPWaH6Q';
-  var map = new mapboxgl.Map({
-    container: 'map',
-    center: [-123.1121, 49.2569],// Vancouver - Coordinates of search location go here
-    zoom: 10,
-    style: 'mapbox://styles/mapbox/streets-v11'
-  });
 
-  map.addControl(
-    new mapboxgl.NavigationControl());
+  const apiKey = 'pk.eyJ1IjoiYWxpbmFnZWUiLCJhIjoiY2tjaG14MTlhMGh4ejJxbzB1dmxtbXhndSJ9.1n05xXhvacdhS-dWPWaH6Q';
+  mapboxgl.accessToken = apiKey;
+
+  fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${localStorage.getItem('searchlocation')}.json?access_token=${apiKey}`)
+    .then(response => response.json())
+    .then((data) => {
+      //console.log(data)
+      const coordinates = data.features[0].center;
+      console.log(coordinates);
+      // add callback to mapbox, giving it your coordinates
+      showMap(coordinates);
+    });
+
+  const showMap = (coord) => {
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      center: coord, // Coordinates of search location go here
+      zoom: 12,
+      style: 'mapbox://styles/mapbox/streets-v11'
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+  }
+
+
+
 </script>
+}
