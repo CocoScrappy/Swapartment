@@ -102,7 +102,7 @@
   fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${localStorage.getItem('searchlocation')}.json?access_token=${apiKey}`)
     .then(response => response.json())
     .then((data) => {
-      //console.log(data)
+      console.log(data)
       const coordinates = data.features[0].center;
       console.log(coordinates);
       // add callback to mapbox, giving it your coordinates
