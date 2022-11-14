@@ -38,7 +38,9 @@
     </div>
     <div class="d-grid">
       @* Temporary - For testing purposes *@
-      <button type="submit" class="btn btn-primary btn-lg" asp-page="/SearchResults">
+
+      <button type="submit" class="btn btn-primary btn-lg" id="searchBtn">
+
         <i class="bi bi-search"></i>
         Search
       </button>
@@ -117,8 +119,10 @@
   const searchlocation = document.querySelector(".searchlocation");
   const form = document.querySelector(".search");
 
+
   function setSearchInStorage(event) {
     localStorage.setItem('searchlocation', `${searchlocation.value}`);
+
   }
 
   form.addEventListener('submit', setSearchInStorage);

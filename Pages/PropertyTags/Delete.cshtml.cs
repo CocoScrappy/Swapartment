@@ -11,7 +11,7 @@ using Swapartment.Models;
 
 namespace Swapartment.Pages_PropertyTags
 {
-  [Authorize]
+  [Authorize(Roles = "ADMIN")]
   public class DeleteModel : PageModel
   {
     private readonly Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext _context;
