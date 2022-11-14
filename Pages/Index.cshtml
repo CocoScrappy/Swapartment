@@ -47,15 +47,18 @@
 
 <h2>Featured Homes</h2>
 <div class="card-grid">
+  @{
+    var indexcarouselcount = 0;
+  }
   @foreach (var item in Model.Property)
   {
     @* Card start *@
     <a asp-area="" asp-page="./Properties/Details" asp-route-id="@item.Id">
-      @{
-        int count = 0;
-      }
       <div class="card mb-3">
-        <div id="carousel0" class="carousel slide">
+        @{
+          var count = 0;
+        }
+        <div id="indexcarousel@(indexcarouselcount)" class="carousel slide">
           <div class="carousel-inner">
 
             @foreach (var image in item.Images!)
@@ -78,11 +81,13 @@
             }
 
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#carousel0" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="indexcarousel@(indexcarouselcount)"
+            data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carousel0" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="indexcarousel@(indexcarouselcount)"
+            data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
@@ -101,7 +106,9 @@
             </p>
           </div>
 
-
+          @{
+            indexcarouselcount++;
+          }
         </div>
       </div>
     </a>
