@@ -2,53 +2,51 @@
 @model Swapartment.Pages_Rentals.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+  ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="border-top pb-5">
+  <div class="container pt-5">
+    <h1 class="mb-5">Edit your trip details</h1>
 
-<h4>Rental</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Rental.Id" />
-            <div class="form-group">
-                <label asp-for="Rental.StartDate" class="control-label"></label>
-                <input asp-for="Rental.StartDate" class="form-control" />
-                <span asp-validation-for="Rental.StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rental.EndDate" class="control-label"></label>
-                <input asp-for="Rental.EndDate" class="form-control" />
-                <span asp-validation-for="Rental.EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rental.PriceTotal" class="control-label"></label>
-                <input asp-for="Rental.PriceTotal" class="form-control" />
-                <span asp-validation-for="Rental.PriceTotal" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Rental.isPaid" /> @Html.DisplayNameFor(model =>
-                    model.Rental.isPaid)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Rental.Feedback" class="control-label"></label>
-                <input asp-for="Rental.Feedback" class="form-control" />
-                <span asp-validation-for="Rental.Feedback" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <form method="post">
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+      <input type="hidden" asp-for="Rental.Id" />
+      <div class="form-floating mb-3">
+        <input asp-for="Rental.StartDate" class="form-control" />
+        <label asp-for="Rental.StartDate" class="control-label"></label>
+        <span asp-validation-for="Rental.StartDate" class="text-danger"></span>
+      </div>
+      <div class="form-floating mb-3">
+        <input asp-for="Rental.EndDate" class="form-control" />
+        <label asp-for="Rental.EndDate" class="control-label"></label>
+        <span asp-validation-for="Rental.EndDate" class="text-danger"></span>
+      </div>
+      <div class="form-floating mb-3">
+        <input asp-for="Rental.PriceTotal" class="form-control" />
+        <label asp-for="Rental.PriceTotal" class="control-label"></label>
+        <span asp-validation-for="Rental.PriceTotal" class="text-danger"></span>
+      </div>
+      @* <div class="form-floating mb-3 form-check">
+        <label class="form-check-label">
+        <input class="form-check-input" asp-for="Rental.isPaid" /> @Html.DisplayNameFor(model =>
+        model.Rental.isPaid)
+        </label>
+        </div> *@
+      <div class="form-floating mb-3">
+        <input asp-for="Rental.Feedback" class="form-control" />
+        <label asp-for="Rental.Feedback" class="control-label"></label>
+        <span asp-validation-for="Rental.Feedback" class="text-danger"></span>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="submit" value="Save" class="btn btn-primary" />
+      </div>
+    </form>
+
+    <div>
+      <a asp-page="./Index">Back to List</a>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
+  </div>
 </div>
 
 @section Scripts {

@@ -67,3 +67,8 @@ a:hover {
   text-decoration-color: unset;
   color: inherit;
 }
+
+table tbody tr:last-child td {
+  border-bottom: 0px;
+  margin-bottom: 12px;
+}

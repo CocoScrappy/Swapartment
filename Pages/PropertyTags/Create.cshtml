@@ -6,7 +6,7 @@
 }
 <div class="bg-image d-flex justify-content-center align-items-center mb-3 p-5">
 
-  <div class="border shadow p-5 height-auto">
+  <div class="height-auto border shadow p-5 ">
 
     <div class="d-flex flex-column height-100">
 
@@ -22,7 +22,7 @@
         </div>
         <div class="form-floating mb-3">
           <input asp-for="PropertyTag.IconUrl" class="form-control" id="floatingInput" />
-          <label asp-for="PropertyTag.IconUrl"></label>
+          <label for="floatingInput" asp-for="PropertyTag.IconUrl"></label>
           <span asp-validation-for="PropertyTag.IconUrl" class="text-danger"></span>
         </div>
         <div class="form-floating mb-3">

@@ -2,39 +2,43 @@
 @model Swapartment.Pages_PropertyTags.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+  ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="bg-image d-flex justify-content-center align-items-center mb-3 p-5">
 
-<h4>PropertyTag</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="PropertyTag.Id" />
-            <div class="form-group">
-                <label asp-for="PropertyTag.Name" class="control-label"></label>
-                <input asp-for="PropertyTag.Name" class="form-control" />
-                <span asp-validation-for="PropertyTag.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PropertyTag.IconUrl" class="control-label"></label>
-                <input asp-for="PropertyTag.IconUrl" class="form-control" />
-                <span asp-validation-for="PropertyTag.IconUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+  <div class="border shadow p-5 height-auto">
+
+    <div class="d-flex flex-column height-100">
+
+      <div class="mb-5">
+        <h2>Edit @Html.DisplayFor(model => model.PropertyTag.Name)</h2>
+      </div>
+      <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="PropertyTag.Id" />
+        <div class="form-floating mb-3">
+          <input asp-for="PropertyTag.Name" class="form-control" />
+          <label asp-for="PropertyTag.Name" class="control-label"></label>
+          <span asp-validation-for="PropertyTag.Name" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+          <input asp-for="PropertyTag.IconUrl" class="form-control" />
+          <label asp-for="PropertyTag.IconUrl" class="control-label"></label>
+          <span asp-validation-for="PropertyTag.IconUrl" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+      </form>
+      <div>
+        <a asp-page="./Index">Back to List</a>
+      </div>
     </div>
-</div>
+  </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
 
-@section Scripts {
-@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+
+  @section Scripts {
+  @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  }
