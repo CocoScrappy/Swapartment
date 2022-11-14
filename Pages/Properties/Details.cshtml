@@ -66,12 +66,15 @@
         <p class="border-bottom py-4">Property tags</p>
         <p class="border-bottom py-4">Reviews</p>
         <div class="border-bottom py-4">
-          <p>Map</p>
+          <h4>Where you'll be</h4>
           <p>
             @Html.DisplayFor(model => model.Property.City),
             @Html.DisplayFor(model => model.Property.State),
             @Html.DisplayFor(model => model.Property.Country)
           </p>
+          <div class="map-container">
+            <div id="map" style='width: 100%; height: 500px;'></div>
+          </div>
 
         </div>
 
@@ -198,3 +201,40 @@
 
 
 </div>
+
+<script>
+
+  const apiKey = 'pk.eyJ1IjoiYWxpbmFnZWUiLCJhIjoiY2tjaG14MTlhMGh4ejJxbzB1dmxtbXhndSJ9.1n05xXhvacdhS-dWPWaH6Q';
+  mapboxgl.accessToken = apiKey;
+
+  const city = "@Html.DisplayFor(model => model.Property.City)";
+  console.log(city);
+
+  fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${city}.json?access_token=${apiKey}`)
+    .then(response => response.json())
+    .then((data) => {
+      //console.log(data)
+      const coordinates = data.features[0].center;
+      console.log(coordinates);
+      // add callback to mapbox, giving it your coordinates
+      showMap(coordinates);
+    });
+
+  const showMap = (coord) => {
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      center: coord, // Coordinates of search location go here
+      zoom: 15,
+      style: 'mapbox://styles/mapbox/streets-v11'
+    });
+
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    new mapboxgl.Marker()
+      .setLngLat(coord)
+      .addTo(map);
+  }
+
+</script>
