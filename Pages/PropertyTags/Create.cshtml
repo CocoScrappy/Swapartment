@@ -2,37 +2,43 @@
 @model Swapartment.Pages_PropertyTags.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+  ViewData["Title"] = "Create";
 }
+<div class="bg-image d-flex justify-content-center align-items-center mb-3 p-5">
 
-<h1>Create</h1>
+  <div class="border shadow p-5 height-auto">
 
-<h4>PropertyTag</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="PropertyTag.Name" class="control-label"></label>
-                <input asp-for="PropertyTag.Name" class="form-control" />
-                <span asp-validation-for="PropertyTag.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PropertyTag.IconUrl" class="control-label"></label>
-                <input asp-for="PropertyTag.IconUrl" class="form-control" />
-                <span asp-validation-for="PropertyTag.IconUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="d-flex flex-column height-100">
+
+      <div>
+        <h2>Add a new amenity</h2>
+      </div>
+      <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-floating mb-3">
+          <input asp-for="PropertyTag.Name" class="form-control" id="floatingTagName" />
+          <label for="floatingTagName" asp-for="PropertyTag.Name"></label>
+          <span asp-validation-for="PropertyTag.Name" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+          <input asp-for="PropertyTag.IconUrl" class="form-control" id="floatingInput" />
+          <label asp-for="PropertyTag.IconUrl"></label>
+          <span asp-validation-for="PropertyTag.IconUrl" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+      </form>
+
+
+      <div>
+        <a asp-page="Index">Back to List</a>
+      </div>
     </div>
+  </div>
 </div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

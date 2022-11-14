@@ -82,7 +82,7 @@
   cards.forEach(setRating);
 
   function setRating(card) {
-    card.innerHTML = `<i class="bi bi-star-fill"></i> ${Math.floor(Math.random() * 5) + 1}`;
+    card.innerHTML = `<i class="bi bi-star-fill"></i> ${Math.floor(Math.random() * (6 - 3) + 3)}`;
   }
 
   // Map
