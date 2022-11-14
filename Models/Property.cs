@@ -54,7 +54,7 @@ namespace Swapartment.Models
     public string State { get; set; } = default!;
 
     [Required]
-    [StringLength(50, MinimumLength = 5)]
+    [StringLength(50, MinimumLength = 2)]
     public string City { get; set; } = default!;
 
     [Required]
