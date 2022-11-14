@@ -20,7 +20,7 @@ public class IndexModel : PageModel
   {
     if (_context.Properties != null)
     {
-      Property = await _context.Properties.ToListAsync();
+      Property = await _context.Properties.Include(i => i.Images).ToListAsync();
     }
   }
 }
