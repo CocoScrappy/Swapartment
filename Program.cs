@@ -26,7 +26,7 @@ builder.Services.AddDefaultIdentity<SwapartmentUser>(options => options.SignIn.R
     .AddEntityFrameworkStores<SwapartmentIdentityDbContext>();
 
 
-//builder.Services.AddOptions<AzureStorageConfig>().Bind(Configuration.GetSection("AzureStorageConfig"));//solving upload.cshtml.cs IOptions problem - actually didn't solve it
+//builder.Services.AddOptions<AzureStorageConfig>().Bind(Configuration.GetSection("AzureStorageConfig"));//solving upload.cshtml.cs IOptions problem - actually didn't solve it 
 
 builder.Services.Configure<AzureStorageConfig>(builder.Configuration.GetSection("AzureStorageConfig"));
 // Add services to the container.

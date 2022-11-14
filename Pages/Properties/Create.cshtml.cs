@@ -13,6 +13,8 @@ using Azure.Storage.Blobs;
 using Swapartment.Helpers;
 using Microsoft.Extensions.Options;
 using Azure.Identity;
+using Microsoft.EntityFrameworkCore;
+using Azure.Storage.Blobs.Models;
 
 namespace Swapartment.Pages_Properties
 {
@@ -24,7 +26,10 @@ namespace Swapartment.Pages_Properties
 
     [BindProperty]
     public Property Property { get; set; } = default!;
+    [BindProperty]
     public PropertyImage PropertyImage { get; set; } = default!;
+    [BindProperty]
+    public ICollection<PropertyImage>? Images { get; set; } = default!;
 
     private BlobContainerClient _containerClient;
     [BindProperty]
@@ -62,37 +67,65 @@ namespace Swapartment.Pages_Properties
       var currentUser = await _userManager.GetUserAsync(User);
 
       Property.SwapartmentUser = currentUser;
-      if (!ModelState.IsValid || _context.Properties == null || Property == null || Uploads.Count == 0)
-      {
-        return Page();
-      }
+      // if (!ModelState.IsValid || _context.Properties == null || Property == null || Uploads.Count == 0)
+      // {
+      //   return Page();
+      // }
+
 
       try
       {
+
+
         // Create the container if it does not exist.
         await _containerClient.CreateIfNotExistsAsync();
+        _context.Properties.Add(Property);
+        await _context.SaveChangesAsync();
+
+        // instantiate Property.Images
+        var propImgList = new List<PropertyImage>();
+
+        string containerEndpoint = _containerClient.Uri.AbsoluteUri;
 
         for (int i = 0; i < Uploads.Count; i++)
         {
+          string uuid = Guid.NewGuid().ToString();
+          // set PropertyImage object ImageUrl to uuid
 
+
+          propImgList.Add(new PropertyImage());
+          propImgList.ElementAt(i).ImageUrl = containerEndpoint + "/" + uuid;
+
+          Property.Images = propImgList;
+
+          //Property.Images.Add(Uploads[i]);
+          // Upload the file to the container
+
+          var cont_type = Uploads[i].ContentType;
+
+          Stream stream = Uploads[i].OpenReadStream();
+          BlobClient blobClient = _containerClient.GetBlobClient(uuid);
+          await blobClient.UploadAsync(stream, true);
+          var res = blobClient.SetHttpHeaders(new BlobHttpHeaders() { ContentType = Uploads[i].ContentType });
+          //var res = await _containerClient.UploadBlobAsync(uuid, Uploads[i].OpenReadStream());
+
+
+          if (!res.GetRawResponse().Status.ToString().StartsWith("2"))
+          {
+            throw new Exception("Upload failed");
+          }
+
+
+
+          _context.Attach(Property).State = EntityState.Modified;
+          await _context.SaveChangesAsync();
         }
-
-
-        // create uuid for filename
-        string uuid = Guid.NewGuid().ToString();
-        await _containerClient.UploadBlobAsync(uuid, Upload.OpenReadStream());
-        PropertyImage.ImageUrl = uuid;
-        Property.Images.Add(PropertyImage);
-        // Upload the file to the container
-
       }
       catch (Exception e)
       {
         Console.WriteLine(e.Message);
       }
 
-      _context.Properties.Add(Property);
-      await _context.SaveChangesAsync();
 
       return RedirectToPage("./Index");
     }

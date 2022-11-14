@@ -71,7 +71,7 @@
 
 
       <div>
-        <input type="file"asp-for="Uploads" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" style="display: none;" multiple />
+        <input type="file" asp-for="Uploads" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" style="display: none;" multiple />
         <input type="button" value="Browse..." onclick="document.getElementById('ImgUpload').click();" />
         <div id="ImgPreview" />
       </div>
@@ -166,12 +166,10 @@
 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script>
         function ImgPre(input) {
-          int index=0;
           for (each of input.files) {
             var reader = new FileReader();
             reader.onload = function (e) {
               var img = document.createElement("img");
-              img.Id = index;
               img.src = e.target.result;
               img.style.width = "100px";
               img.style.height = "100px";
@@ -194,7 +192,7 @@
 
             };
             reader.readAsDataURL(each);
-            index++;
+
           }
         }
     </script>
