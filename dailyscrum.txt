@@ -25,6 +25,17 @@ Template
 3. Need assistance / figure things out
 - Probably.
 
+2022/11/13 Alina
+1. Done / not done since last scrum:
+- Make all property cards clickable
+- Edit/create properties page
+2. To do until next Scrum:
+- Map features
+- Work with team to iron out last few kinks
+- Continue polishing style
+3. Need assistance / figure things out
+- 
+
 
 12th Nov
 =========
