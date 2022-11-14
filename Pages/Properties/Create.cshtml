@@ -71,7 +71,8 @@
 
 
       <div>
-        <input type="file" asp-for="Uploads" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" style="display: none;" multiple />
+        <input type="file" asp-for="Uploads" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg"
+          style="display: none;" multiple />
         <input type="button" value="Browse..." onclick="document.getElementById('ImgUpload').click();" />
         <div id="ImgPreview" />
       </div>
@@ -164,36 +165,36 @@
 
 @section Scripts {
 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script>
-        function ImgPre(input) {
-          for (each of input.files) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-              var img = document.createElement("img");
-              img.src = e.target.result;
-              img.style.width = "100px";
-              img.style.height = "100px";
-              document.getElementById("ImgPreview").appendChild(img);
-              //add delete button to each image
-              var btn = document.createElement("button");
-              btn.innerHTML = "X";
-              btn.className = "btn btn-danger delete-btn"; // Alina you could prob use .delete-btn to style that delete button?
-              btn.onclick = function () {
-                //remove image from input list given index
-                //;
-                //let fileListArr = Array.from(input.files);
-                //fileListArr.splice(img.Id, 1);
-                img.remove();
-                btn.remove();
+<script>
+  function ImgPre(input) {
+    for (each of input.files) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        var img = document.createElement("img");
+        img.src = e.target.result;
+        img.style.width = "100px";
+        img.style.height = "100px";
+        document.getElementById("ImgPreview").appendChild(img);
+        //add delete button to each image
+        var btn = document.createElement("button");
+        btn.innerHTML = "X";
+        btn.className = "btn btn-danger delete-btn"; // Alina you could prob use .delete-btn to style that delete button?
+        btn.onclick = function () {
+          //remove image from input list given index
+          //;
+          //let fileListArr = Array.from(input.files);
+          //fileListArr.splice(img.Id, 1);
+          img.remove();
+          btn.remove();
 
-              };
-              document.getElementById("ImgPreview").appendChild(btn);
-              console.log(input.files);
+        };
+        document.getElementById("ImgPreview").appendChild(btn);
+        console.log(input.files);
 
-            };
-            reader.readAsDataURL(each);
+      };
+      reader.readAsDataURL(each);
 
-          }
-        }
-    </script>
+    }
+  }
+</script>
 }

@@ -1,4 +1,5 @@
 @page
+@using Models
 @model Swapartment.Pages_Properties.DetailsModel
 
 @{
@@ -15,26 +16,32 @@
       @Html.DisplayFor(model => model.Property.State),
       @Html.DisplayFor(model => model.Property.Country)
     </p>
-
+    @{
+      List<PropertyImage> images = new List<PropertyImage>();
+    }
+    @foreach (var i in Model.Property.Images!)
+    {
+      images.Add(i);
+    }
     @* Photo Layout *@
     <div class="photo-layout">
       <div class="row gx-2">
 
         <div class="col-lg-6">
-          <img src="/images/home_splash4.jpg" alt="">
+          <img src="@images.ElementAt(0).ImageUrl" alt="">
         </div>
 
         <div class="col-3">
           <div class="d-flex flex-column">
-            <img class="mb-2" src="/images/home_splash.jpg" alt="">
-            <img src="/images/home_splash2.jpg" alt="">
+            <img class="mb-2" src="@images.ElementAt(1).ImageUrl" alt="">
+            <img src="@images.ElementAt(2).ImageUrl" alt="">
           </div>
         </div>
 
         <div class="col-3">
           <div class="d-flex flex-column">
-            <img class="mb-2" src="/images/home_splash3.jpg" alt="">
-            <img src="/images/home_splash5.jpg" alt="">
+            <img class="mb-2" src="@images.ElementAt(3).ImageUrl" alt="">
+            <img src="@images.ElementAt(4).ImageUrl" alt="">
           </div>
         </div>
 

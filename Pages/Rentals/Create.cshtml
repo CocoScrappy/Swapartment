@@ -24,7 +24,8 @@
       </div>
       <div class="form-group">
         <label asp-for="Rental.PriceTotal" class="control-label"></label>
-        <input asp-for="Rental.PriceTotal" id="priceTotal" class="form-control" readonly />
+        <p id="displayPrice">$0.00</p>
+        <input asp-for="Rental.PriceTotal" hidden id="priceTotal" class="form-control" />
         <span asp-validation-for="Rental.PriceTotal" class="text-danger"></span>
       </div>
       <div class="form-group">
@@ -68,6 +69,7 @@
       price = (dateDiff * (@Model.Rental.Property.DailyRate))
       console.log("price = " + price);
       document.getElementById("priceTotal").value = price;
+      document.getElementById("displayPrice").innerHTML = `$${price.toFixed(2)}`;
     }
   }
 </script>
