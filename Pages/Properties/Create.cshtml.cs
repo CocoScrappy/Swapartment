@@ -88,16 +88,23 @@ namespace Swapartment.Pages_Properties
           string uuid = Guid.NewGuid().ToString();
           // set PropertyImage object ImageUrl to uuid
           
-          PropertyImage.ImageUrl = containerEndpoint + "/" + uuid;
           
           propImgList.Add(new PropertyImage());
-          propImgList.ElementAt(i).ImageUrl = uuid;
+          propImgList.ElementAt(i).ImageUrl = containerEndpoint + "/" + uuid;
 
           Property.Images = propImgList;
 
           //Property.Images.Add(Uploads[i]);
           // Upload the file to the container
-          await _containerClient.UploadBlobAsync(uuid, Uploads[i].OpenReadStream());
+
+          var res = await _containerClient.UploadBlobAsync(uuid, Uploads[i].OpenReadStream());
+          if (!res.GetRawResponse().Status.ToString().StartsWith("2"))
+          {
+            throw new Exception("Upload failed");
+          }
+
+      
+
           _context.Attach(Property).State = EntityState.Modified;
           await _context.SaveChangesAsync();
         }
