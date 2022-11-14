@@ -72,7 +72,7 @@
         <input type="submit" value="Create" class="btn btn-primary" />
       </div>
       <div>
-        <input type="file"asp-for="Uploads" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" style="display: none;" multiple />
+        <input type="file" asp-for="Uploads" id="ImgUpload" onchange="ImgPre(this)" accept="image/png, image/jpeg" style="display: none;" multiple />
         <input type="button" value="Browse..." onclick="document.getElementById('ImgUpload').click();" />
         <div id="ImgPreview" />
       </div>

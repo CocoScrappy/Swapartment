@@ -14,6 +14,7 @@ using Swapartment.Helpers;
 using Microsoft.Extensions.Options;
 using Azure.Identity;
 using Microsoft.EntityFrameworkCore;
+using Azure.Storage.Blobs.Models;
 
 namespace Swapartment.Pages_Properties
 {
@@ -71,8 +72,11 @@ namespace Swapartment.Pages_Properties
       //   return Page();
       // }
 
+
       try
       {
+            
+
         // Create the container if it does not exist.
         await _containerClient.CreateIfNotExistsAsync();
         _context.Properties.Add(Property);
@@ -96,8 +100,16 @@ namespace Swapartment.Pages_Properties
 
           //Property.Images.Add(Uploads[i]);
           // Upload the file to the container
-
-          var res = await _containerClient.UploadBlobAsync(uuid, Uploads[i].OpenReadStream());
+          
+          var cont_type = Uploads[i].ContentType;
+          
+          Stream stream = Uploads[i].OpenReadStream();
+          BlobClient blobClient = _containerClient.GetBlobClient(uuid);
+          await blobClient.UploadAsync(stream, true);
+          var res = blobClient.SetHttpHeaders(new BlobHttpHeaders() { ContentType = Uploads[i].ContentType });
+          //var res = await _containerClient.UploadBlobAsync(uuid, Uploads[i].OpenReadStream());
+          
+          
           if (!res.GetRawResponse().Status.ToString().StartsWith("2"))
           {
             throw new Exception("Upload failed");
