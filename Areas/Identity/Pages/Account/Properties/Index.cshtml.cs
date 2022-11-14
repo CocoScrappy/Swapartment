@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Swapartment.Areas.Identity.Data;
 using Swapartment.Models;
 
-namespace Swapartment.Pages_PropertyImages
+namespace Swapartment.Areas.Identity.Pages_Properties
 {
   [Authorize]
   public class IndexModel : PageModel
@@ -21,13 +21,13 @@ namespace Swapartment.Pages_PropertyImages
       _context = context;
     }
 
-    public IList<PropertyImage> PropertyImage { get; set; } = default!;
+    public IList<Property> Property { get; set; } = default!;
 
     public async Task OnGetAsync()
     {
-      if (_context.PropertyImages != null)
+      if (_context.Properties != null)
       {
-        PropertyImage = await _context.PropertyImages.ToListAsync();
+        Property = await _context.Properties.ToListAsync();
       }
     }
   }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Swapartment.Areas.Identity.Data;
 using Swapartment.Models;
 
-namespace Swapartment.Pages_Rentals
+namespace Swapartment.Areas.Identity.Pages_Rentals
 {
   [Authorize]
   public class IndexModel : PageModel

@@ -5,52 +5,60 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Swapartment.Areas.Identity.Data;
 using Swapartment.Models;
 
-namespace Swapartment.Pages_PropertyTags
+namespace Swapartment.Areas.Identity.Pages_Rentals
 {
   [Authorize]
-  public class EditModel : PageModel
+  public class DetailsModel : PageModel
   {
     private readonly Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext _context;
 
-    public EditModel(Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext context)
+    public DetailsModel(Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext context)
     {
       _context = context;
     }
 
     [BindProperty]
-    public PropertyTag PropertyTag { get; set; } = default!;
+    public Rental Rental { get; set; } = default!;
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
-      if (id == null || _context.PropertyTags == null)
+      if (id == null || _context.Rentals == null)
       {
         return NotFound();
       }
 
-      var propertytag = await _context.PropertyTags.FirstOrDefaultAsync(m => m.Id == id);
-      if (propertytag == null)
+      var rental = await _context.Rentals.FirstOrDefaultAsync(m => m.Id == id);
+      if (rental == null)
       {
         return NotFound();
       }
-      PropertyTag = propertytag;
+      else
+      {
+        Rental = rental;
+      }
       return Page();
     }
 
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see https://aka.ms/RazorPagesCRUD.
-    public async Task<IActionResult> OnPostAsync()
+    public async Task<IActionResult> OnPostAsync(int id)
     {
       if (!ModelState.IsValid)
       {
         return Page();
       }
+      if (id == null || _context.Rentals == null)
+      {
+        return NotFound();
+      }
 
-      _context.Attach(PropertyTag).State = EntityState.Modified;
+
+      //Update info in initial Rental Object
+      var oldRental = _context.Rentals?.Where(e => e.Id == id).FirstOrDefault();
+      oldRental.Feedback = Rental.Feedback;
+      _context.Attach(oldRental).State = EntityState.Modified;
 
       try
       {
@@ -58,7 +66,7 @@ namespace Swapartment.Pages_PropertyTags
       }
       catch (DbUpdateConcurrencyException)
       {
-        if (!PropertyTagExists(PropertyTag.Id))
+        if (!RentalExists(Rental.Id))
         {
           return NotFound();
         }
@@ -71,9 +79,9 @@ namespace Swapartment.Pages_PropertyTags
       return RedirectToPage("./Index");
     }
 
-    private bool PropertyTagExists(int id)
+    private bool RentalExists(int id)
     {
-      return (_context.PropertyTags?.Any(e => e.Id == id)).GetValueOrDefault();
+      return (_context.Rentals?.Any(e => e.Id == id)).GetValueOrDefault();
     }
   }
 }

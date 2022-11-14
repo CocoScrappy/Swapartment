@@ -41,17 +41,17 @@ namespace Swapartment.Pages_Properties
       _context = context;
       _userManager = userManager;
 
-        if (env.IsDevelopment())
-        {
-          _containerClient = new BlobContainerClient(config.Value.BlobAccountName, config.Value.BlobContainerName);
-        }
-        else
-        {
-          string containerEndpoint = string.Format("https://{0}.blob.core.windows.net/{1}",
-            config.Value.BlobAccountName,
-            config.Value.BlobContainerName);
-          _containerClient = new BlobContainerClient(new Uri(containerEndpoint), new DefaultAzureCredential());
-        }
+      if (env.IsDevelopment())
+      {
+        _containerClient = new BlobContainerClient(config.Value.BlobAccountName, config.Value.BlobContainerName);
+      }
+      else
+      {
+        string containerEndpoint = string.Format("https://{0}.blob.core.windows.net/{1}",
+          config.Value.BlobAccountName,
+          config.Value.BlobContainerName);
+        _containerClient = new BlobContainerClient(new Uri(containerEndpoint), new DefaultAzureCredential());
+      }
 
     }
 
@@ -105,7 +105,8 @@ namespace Swapartment.Pages_Properties
       catch (Exception e)
       {
         Console.WriteLine(e.Message);
-      }      
+      }
+
 
       return RedirectToPage("./Index");
     }

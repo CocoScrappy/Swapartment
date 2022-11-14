@@ -69,14 +69,6 @@
                 <input asp-for="Property.Country" class="form-control" />
                 <span asp-validation-for="Property.Country" class="text-danger"></span>
             </div>
-            @foreach (var item in Model.Tags)
-            {
-                <div class="form-group">
-                    <label asp-for="Property.Country" class="control-label"></label>
-                    <input type="checkbox" asp-for="Property.Country" class="form-control" />
-                    <span asp-validation-for="Property.Country" class="text-danger"></span>
-                </div>
-            }
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

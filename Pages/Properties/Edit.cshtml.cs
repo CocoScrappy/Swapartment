@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,6 +12,7 @@ using Swapartment.Models;
 
 namespace Swapartment.Pages_Properties
 {
+  [Authorize]
   public class EditModel : PageModel
   {
     private readonly Swapartment.Areas.Identity.Data.SwapartmentIdentityDbContext _context;
@@ -22,6 +24,8 @@ namespace Swapartment.Pages_Properties
 
     [BindProperty]
     public Property Property { get; set; } = default!;
+    [BindProperty]
+    public IList<PropertyTag> Tags { get; set; }
 
     public async Task<IActionResult> OnGetAsync(int? id)
     {
@@ -29,6 +33,7 @@ namespace Swapartment.Pages_Properties
       {
         return NotFound();
       }
+      Tags = await _context.PropertyTags.ToListAsync();
 
       var property = await _context.Properties.FirstOrDefaultAsync(m => m.Id == id);
       if (property == null)

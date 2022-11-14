@@ -24,7 +24,7 @@
       </div>
       <div class="form-group">
         <label asp-for="Rental.PriceTotal" class="control-label"></label>
-        <p asp-for="Rental.PriceTotal" id="priceTotal" class="form-control">$0.00</p>
+        <input asp-for="Rental.PriceTotal" disabled id="priceTotal" class="form-control" />
         <span asp-validation-for="Rental.PriceTotal" class="text-danger"></span>
       </div>
       <div class="form-group">
@@ -53,24 +53,25 @@
     console.log(startVal);
     var end = document.getElementById("end");
     var endVal = end.value;
-    if (startVal > endVal)
-      if (startVal == "" || endVal == "") {
-        price = 0;
-      }
-      else {
-        var startArray = startVal.split("-");
-        var endArray = endVal.split("-");
-        var startDate = new Date(startArray[0], startArray[1], startArray[2]);
-        var endDate = new Date(endArray[0], endArray[1], endArray[2]);
 
-        var dateDiff = endDate - startDate;
-        var dateDiff = dateDiff / (1000 * 3600 * 24);
-        price = (dateDiff * (@Model.Rental.Property.DailyRate + 0.22))
-        console.log("price = " + price);
-        document.getElementById("priceTotal").innerHTML = `$${price}`;
-      }
+    if (startVal == "" || endVal == "") {
+      price = 0;
+    }
+    else {
+      var startArray = startVal.split("-");
+      var endArray = endVal.split("-");
+      var startDate = new Date(startArray[0], startArray[1], startArray[2]);
+      var endDate = new Date(endArray[0], endArray[1], endArray[2]);
+
+      var dateDiff = endDate - startDate;
+      var dateDiff = dateDiff / (1000 * 3600 * 24);
+      price = (dateDiff * (@Model.Rental.Property.DailyRate))
+      console.log("price = " + price);
+      document.getElementById("priceTotal").value = price;
+    }
   }
 </script>
+
 @section Scripts {
 @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
