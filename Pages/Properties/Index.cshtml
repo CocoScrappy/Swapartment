@@ -58,6 +58,8 @@
         </tr>
       </thead>
       <tbody>
+         @if (Model.Property != null)
+        {
         @foreach (var item in Model.Property)
         {
           <tr>
@@ -100,6 +102,7 @@
               <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
           </tr>
+        }
         }
       </tbody>
     </table>

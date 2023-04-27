@@ -83,16 +83,11 @@ namespace Swapartment.Pages_Properties
         for (int i = 0; i < Uploads.Count; i++)
         {
           string uuid = Guid.NewGuid().ToString();
-
-
-
           propImgList.Add(new PropertyImage());
           propImgList.ElementAt(i).ImageUrl = containerEndpoint + "/" + uuid;
 
           Property.Images = propImgList;
-
           // Upload the file to the container
-
           var cont_type = Uploads[i].ContentType;
 
           Stream stream = Uploads[i].OpenReadStream();
@@ -100,14 +95,10 @@ namespace Swapartment.Pages_Properties
           await blobClient.UploadAsync(stream, true);
           var res = blobClient.SetHttpHeaders(new BlobHttpHeaders() { ContentType = Uploads[i].ContentType });
 
-
           if (!res.GetRawResponse().Status.ToString().StartsWith("2"))
           {
             throw new Exception("Upload failed");
           }
-
-
-
           _context.Attach(Property).State = EntityState.Modified;
           await _context.SaveChangesAsync();
         }
@@ -116,7 +107,6 @@ namespace Swapartment.Pages_Properties
       {
         Console.WriteLine(e.Message);
       }
-
 
       return RedirectToPage("./Index");
     }
